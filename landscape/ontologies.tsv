@@ -3,7 +3,7 @@ NCBITaxon	NCBI Taxonomy	Taxon identifiers	NCBITaxon:131567 cellular organisms	no
 GTDB	Genome Taxonomy Database	Taxon identifiers for MAGs	-	no	accepted (id_prefixes)	TODO	Needs NCBITaxon mapping file
 ENVO	Environment Ontology	env_broad_scale / env_local_scale / env_medium values	ENVO:00000428 biome; ENVO:01000254 environmental system; ENVO:00010483 environmental material	yes	used	TODO	Required by MIxS
 UBERON	Uberon anatomy	Host body site, anatomical context	UBERON:0001062 anatomical entity	yes	used	TODO
-MONDO	Mondo Disease Ontology	Disease identifiers (preferred, proposal)	MONDO:0000001 disease	no	used	TODO	Publishes SSSOM mappings to DOID/NCIT/EFO; decide vs DO on Day 1
+MONDO	Mondo Disease Ontology	Disease identifiers (preferred, proposal)	MONDO:0000001 disease	no	used	TODO	Publishes SSSOM mappings to DOID/NCIT/EFO; decide vs DO
 DOID	Human Disease Ontology	Disease identifiers	DOID:4 disease	yes	accepted, bridged via SSSOM	TODO	Named in proposal
 NCIT	NCI Thesaurus	Disease / clinical terms	-	yes	accepted	TODO	Useful for clinical and cancer detail
 EFO	Experimental Factor Ontology	Disease / phenotype / experimental factors	-	yes	accepted	TODO

@@ -1,6 +1,6 @@
 # ADR-0001: Represent associations as nodes (reification), with derived shortcut edges
 
-- **Status:** Proposed. To be ratified on hackathon Day 1.
+- **Status:** Proposed
 - **Date:** 2026-09-15
 
 ## Context
@@ -26,9 +26,9 @@ Use **option 4** as the source of truth, and add a **derived layer of direct edg
 
 ## Consequences
 
-- ✅ Conflicting and context-dependent findings coexist and can be queried (`uc3-cq02`).
-- ✅ It aligns with Biolink / KG-Microbe / MicrobiomeKG, so crosswalks are cheap.
-- ✅ Graph-ML users can take the shortcut graph, and use association attributes as edge features.
-- ⚠️ Queries are longer: 3 triple patterns per hop instead of 1.
-- ⚠️ More triples. This is acceptable at the expected scale; revisit if needed.
-- ⚠️ Shortcut thresholds (confidence ≥ 0.5, not negated) are a policy that needs community agreement.
+- Pro: Conflicting and context-dependent findings coexist and can be queried (`uc3-cq02`).
+- Pro: It aligns with Biolink / KG-Microbe / MicrobiomeKG, so crosswalks are cheap.
+- Pro: Graph-ML users can take the shortcut graph, and use association attributes as edge features.
+- Con: Queries are longer: 3 triple patterns per hop instead of 1.
+- Con: More triples. This is acceptable at the expected scale; revisit if needed.
+- Con: Shortcut thresholds (confidence ≥ 0.5, not negated) are a policy that needs community agreement.

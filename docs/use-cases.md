@@ -6,10 +6,10 @@ Competency questions (CQs) are the questions the knowledge graph must be able to
 |---|---|---|
 | UC1 Aeromicrobiome functional characterisation | `queries/uc1-aeromicrobiome/` | `examples/valid/Container-uc1-aeromicrobiome.yaml` |
 | UC2 Antimicrobial resistance transmission | `queries/uc2-amr-transmission/` | `examples/valid/Container-uc2-amr.yaml` |
-| UC3 Host–microbiome interactions in cancer ⭐ | `queries/uc3-host-microbiome-cancer/` | `examples/valid/Container-uc3-cancer.yaml` |
+| UC3 Host–microbiome interactions in cancer | `queries/uc3-host-microbiome-cancer/` | `examples/valid/Container-uc3-cancer.yaml` |
 | UC4 Metabolic impact of nutrition | `queries/uc4-nutrition-metabolism/` | `examples/valid/Container-uc4-nutrition.yaml` |
 
-⭐ UC3 is the reference use case; copy its structure.
+UC3 is the most complete one; copy its structure.
 
 ## UC1: Aeromicrobiome
 
@@ -45,10 +45,10 @@ Competency questions (CQs) are the questions the knowledge graph must be able to
 
 ## Proposing a new competency question
 
-Open a **Competency question** issue. A good question:
+A good question:
 
 - names the **entities** involved (taxon, habitat, disease…) and the **context** that matters (body site, time, place);
 - includes a **concrete example answer** from your domain, so toy data can be written;
 - says which **existing resource** could supply real data (e.g. MGnify, CARD, gutMDisorder).
 
-Squads then add the query, toy data and expected result (see [Onboarding](onboarding.md#4-typical-contributions)).
+Then add the query, toy data and expected result (see [Onboarding](onboarding.md#4-typical-contributions)).

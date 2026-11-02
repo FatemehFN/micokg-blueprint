@@ -1,6 +1,6 @@
 # ADR-0002: Identifiers, IRIs and ontology-valued slots
 
-- **Status:** Proposed. To be ratified on hackathon Day 1.
+- **Status:** Proposed
 - **Date:** 2026-09-15
 
 ## Context
@@ -32,7 +32,7 @@ Integration only works if the same thing has the same identifier everywhere. The
 
 ## Consequences
 
-- ✅ Data from different resources joins on identifiers, not labels.
-- ✅ Queries can use `rdfs:subClassOf*` over ontology slims or full ontologies.
-- ⚠️ YAML patterns check the prefix only, not whether the term exists or sits in the right branch. The nightly `linkml-term-validator` job covers that.
-- ⚠️ SHACL `sh:pattern` constraints written for CURIEs don't apply to expanded IRIs, so they are dropped when validating RDF (see `tests/test_rdf_shacl.py`).
+- Pro: Data from different resources joins on identifiers, not labels.
+- Pro: Queries can use `rdfs:subClassOf*` over ontology slims or full ontologies.
+- Con: YAML patterns check the prefix only, not whether the term exists or sits in the right branch. `make terms` runs `linkml-term-validator` for that.
+- Con: SHACL `sh:pattern` constraints written for CURIEs don't apply to expanded IRIs, so they are dropped when validating RDF (see `tests/test_rdf_shacl.py`).

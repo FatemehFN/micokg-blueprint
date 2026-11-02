@@ -1,6 +1,6 @@
 # ADR-0003: Ontology reuse and the use of slims
 
-- **Status:** Proposed. To be ratified on hackathon Day 1.
+- **Status:** Proposed
 - **Date:** 2026-09-15
 
 ## Context
@@ -27,11 +27,11 @@ The proposal names GO, ENVO, DO, SOSA, SIO, NCIT, UBERON, EFO and DCT, and the u
 
 3. **Slims for tests.** `scripts/build_slims.py` collects the is_a ancestors and labels of every term used in examples and curated mappings from the EBI OLS API, into `examples/ontology-slims/*.ttl`. The slims are committed, so tests run offline in seconds.
 4. **Production** deployments should load full ontologies, or federate with a service that holds them (e.g. Ubergraph), instead of relying on slims.
-5. **Branch checks.** Dynamic enums in `schema/enums.yaml` (`reachable_from`) describe the allowed branch for each slot. They are checked in the weekly `nightly-terms.yml` workflow, not in PR CI.
+5. **Branch checks.** Dynamic enums in `schema/enums.yaml` (`reachable_from`) describe the allowed branch for each slot. They are checked by `make terms` (needs network access), not in CI.
 
 ## Consequences
 
-- ✅ Pure-Python tooling with fast, offline CI.
-- ✅ The ontology evaluation matrix (`landscape/ontologies.tsv`) can change without schema churn.
-- ⚠️ Slims have to be rebuilt (`make slims`) when new terms are used. The nightly job warns about drift.
-- ⚠️ Ontology structure can surprise. For example, in SO, *plasmid* is not a subclass of *mobile_genetic_element*, so query authors must check hierarchies in OLS.
+- Pro: Pure-Python tooling with fast, offline CI.
+- Pro: The ontology evaluation matrix (`landscape/ontologies.tsv`) can change without schema churn.
+- Con: Slims have to be rebuilt (`make slims`) when new terms are used. `make terms` checks for drift.
+- Con: Ontology structure can surprise. For example, in SO, *plasmid* is not a subclass of *mobile_genetic_element*, so query authors must check hierarchies in OLS.

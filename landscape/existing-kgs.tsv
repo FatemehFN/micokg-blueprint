@@ -4,7 +4,7 @@ MicrobiomeKG	https://www.frontiersin.org/journals/systems-biology/articles/10.33
 MiKG	https://www.atlantis-press.com/journals/jaims/125948765/view	Gut-brain axis microbiome KG	TODO	Turtle (GraphDB)	TODO	TODO	SPARQL (GraphDB)	RDF-native; compare predicates	no
 MDKG	https://github.com/ccszbd/MDKG	Microbe-disease knowledge graph	TODO	TODO	TODO	TODO	GitHub	TODO	no
 MINERVA	https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12780759/	Microbe-disease KG	TODO	TODO	TODO	TODO	TODO	Published statistical critiques: useful caution on evidence modelling	no
-gutMDisorder	https://academic.oup.com/nar/article/51/D1/D717/6754909	Curated gut microbe-disorder (and intervention) associations	TODO (non-RDF)	TODO	TODO	TODO	TODO	Candidate real-data slice for UC3/UC4 on Day 4	no
+gutMDisorder	https://academic.oup.com/nar/article/51/D1/D717/6754909	Curated gut microbe-disorder (and intervention) associations	TODO (non-RDF)	TODO	TODO	TODO	TODO	Candidate real-data slice for UC3/UC4	no
 Disbiome	TODO	Curated microbe-disease associations	TODO (non-RDF)	TODO	TODO	TODO	TODO	Disease terms reportedly MedDRA: needs mapping to MONDO/NCIT	no
 HMDAD	TODO	Human microbe-disease associations	TODO	TODO	TODO	TODO	TODO	TODO	no
 GMMAD	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	no

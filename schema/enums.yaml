@@ -3,8 +3,7 @@ name: micokg_enums
 description: >-
   Two kinds of enum. Static enums are small internal code lists and appear in
   RDF as literals. Dynamic enums describe which ontology branch an
-  ontology-valued slot may draw from; they are checked by the nightly
-  linkml-term-validator job (they need ontology downloads) and documented on
+  ontology-valued slot may draw from; they are checked by `make terms` job (they need ontology downloads) and documented on
   each slot via `bindings`. Ontology-valued slots themselves have range
   uriorcurie so they are serialised as IRIs, not literals (ADR-0002).
 default_prefix: micokg

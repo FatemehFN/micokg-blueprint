@@ -1,6 +1,6 @@
 # MiCoKnowGraph
 
-A collaborative, interoperable knowledge-graph (KG) blueprint for microbiome research. It is a personal draft prepared as a starting point for BioHackathon Europe 2026, Project 16 (ELIXIR Microbiome Community), partnered with Project 11 VERDANT. It is not the project's official repository.
+A draft data model for a microbiome knowledge graph (KG), written as a starting point for BioHackathon Europe 2026, Project 16. Source: <https://github.com/FatemehFN/micokg-blueprint>.
 
 ## Where to start
 
@@ -11,7 +11,7 @@ A collaborative, interoperable knowledge-graph (KG) blueprint for microbiome res
 | Adding classes, slots or data | [Modelling guide](modelling-guide.md) |
 | A domain expert with questions the KG should answer | [Use cases](use-cases.md) |
 | Working on mappings or VERDANT | [VERDANT integration](verdant-integration.md) |
-| Wondering why something is modelled the way it is | The decision records (ADRs) |
+| Wondering why something is modelled the way it is | The design notes under Decisions |
 
 ## The design in one picture
 

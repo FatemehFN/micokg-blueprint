@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "micoknowgraph"
 version = "0.1.0"
-description = "MiCoKnowGraph: a LinkML blueprint for a collaborative microbiome knowledge graph (BioHackathon Europe 2026, Project 16)"
+description = "Draft LinkML data model for a microbiome knowledge graph (BioHackathon Europe 2026, Project 16)"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12,<3.14"

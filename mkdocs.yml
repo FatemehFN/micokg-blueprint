@@ -1,6 +1,6 @@
 site_name: MiCoKnowGraph
-site_description: A collaborative knowledge-graph blueprint for microbiome research (BioHackathon Europe 2026, Project 16)
-repo_url: https://github.com/OWNER/micoknowgraph   # TODO: set once the GitHub organisation is agreed
+site_description: Draft data model for a microbiome knowledge graph (BioHackathon Europe 2026, Project 16)
+repo_url: https://github.com/FatemehFN/micokg-blueprint
 theme:
   name: material
   features:
@@ -21,7 +21,7 @@ nav:
       - Modelling guide: modelling-guide.md
       - Use cases: use-cases.md
       - VERDANT integration: verdant-integration.md
-      - Decisions (ADRs):
+      - Decisions:
           - "0001 Reified associations": adr/0001-association-reification.md
           - "0002 Identifiers and IRIs": adr/0002-identifier-policy.md
           - "0003 Ontology reuse": adr/0003-ontology-reuse.md

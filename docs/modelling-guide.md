@@ -1,6 +1,6 @@
 # Modelling guide
 
-These are the conventions used in `schema/` and `examples/`. The reasons behind them are recorded in the ADRs.
+These are the conventions used in `schema/` and `examples/`. The reasons behind them are in the design notes in `docs/adr/`.
 
 ## Principles
 
@@ -53,7 +53,7 @@ env_medium:
 
 Example: *taxon produces a quorum-sensing molecule that affects host inflammation*.
 
-1. **Write the competency question first** and open an issue.
+1. **Write the competency question first.**
 2. **Check whether an existing class fits.** Here `TaxonMetaboliteAssociation` plus `MetaboliteDiseaseAssociation` already chain.
 3. If a new class is needed, add it to `schema/associations.yaml`:
 
@@ -82,7 +82,7 @@ Example: *taxon produces a quorum-sensing molecule that affects host inflammatio
 - `simple_result` is a number. Use `0` for "tested and not detected", and simply leave out things that weren't tested.
 - `used_procedure` should point to an OBI assay or a bio.tools/WorkflowHub identifier.
 
-## Open questions for the hackathon (Day 1)
+## Open questions
 
 | # | Question | Current choice |
 |---|---|---|

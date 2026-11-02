@@ -2,7 +2,7 @@
 
 [VERDANT](https://github.com/elixir-europe/biohackathon-projects-2026/blob/main/11.md) builds AI-generated SKOS mappings (exactMatch, closeMatch, relatedMatch) from vocabulary terms to ontologies and knowledge bases, with an expert pre-check loop and a federated SPARQL endpoint. It will enrich a subset of the ELIXIR Microbiome Community KG.
 
-This page is a **draft exchange contract**, to be agreed with the VERDANT leads before the event.
+This page sketches how data could flow between the two projects. Nothing here has been agreed with the VERDANT team.
 
 ## Data flow
 
@@ -31,7 +31,7 @@ flowchart LR
 
 Sources:
 - free-text habitat, sample-type, host and disease labels from the landscape KGs;
-- labels found during real-data ingestion (Day 4).
+- labels found when real data is loaded.
 
 ## 2. VERDANT → MiCoKnowGraph
 
@@ -52,7 +52,7 @@ Every candidate row gets:
 
 ## 3. Review
 
-Curators (Group C) review candidates in a pull request:
+Reviewers go through candidates in a pull request:
 
 | Decision | Action |
 |---|---|

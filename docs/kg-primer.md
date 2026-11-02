@@ -18,7 +18,7 @@ This format is called **RDF**, and `.ttl` (Turtle) files are one way to write it
 
 ## 2. IRIs and CURIEs: global names
 
-Every node and predicate is named by an **IRI**, a web address such as `http://purl.obolibrary.org/obo/NCBITaxon_851`. Writing that in full is tedious, so we use **CURIEs** (`NCBITaxon:851`) plus a prefix map that expands them. The prefix map is in [`schema/micokg.yaml`](https://github.com/OWNER/micoknowgraph/blob/main/schema/micokg.yaml).
+Every node and predicate is named by an **IRI**, a web address such as `http://purl.obolibrary.org/obo/NCBITaxon_851`. Writing that in full is tedious, so we use **CURIEs** (`NCBITaxon:851`) plus a prefix map that expands them. The prefix map is in [`schema/micokg.yaml`](https://github.com/FatemehFN/micokg-blueprint/blob/main/schema/micokg.yaml).
 
 The golden rule: **if an ontology already has an identifier for the thing, use it.** Two resources that both say `NCBITaxon:851` are automatically about the same organism, with no joining on fuzzy names.
 

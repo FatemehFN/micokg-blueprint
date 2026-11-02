@@ -7,7 +7,7 @@ Goal: go from a fresh clone to a green `make all` and your first query in about 
 You need Python **3.12 or 3.13**. LinkML does not support 3.14 yet. Java and Docker are not needed.
 
 ```bash
-git clone <repo-url> micoknowgraph && cd micoknowgraph
+git clone https://github.com/FatemehFN/micokg-blueprint.git && cd micokg-blueprint
 mamba env create -f environment.yml      # conda works too
 mamba activate micokg
 ```
@@ -69,18 +69,16 @@ Try an ad-hoc query: copy a `.rq` file, edit it, then run `python scripts/run_cq
 
 **Add a competency question**
 
-1. Open a *Competency question* issue.
-2. Add a `.rq` file and an entry in `queries/ucN-*/cqs.yaml`.
-3. Add toy data that should produce an answer.
-4. Run `python scripts/run_cq.py <id>`. Check the output **by hand**, then write it with `--write-expected`.
-5. Run `make test`.
+1. Add a `.rq` file and an entry in `queries/ucN-*/cqs.yaml`.
+2. Add toy data that should produce an answer.
+3. Run `python scripts/run_cq.py <id>`. Check the output **by hand**, then write it with `--write-expected`.
+4. Run `make test`.
 
 **Change the schema**
 
-1. Open a *Schema change* issue that names the competency question it serves.
-2. Edit the relevant `schema/*.yaml` module.
-3. Run `make lint validate test`.
-4. If the change is a design decision, add an ADR in `docs/adr/`.
+1. Edit the relevant `schema/*.yaml` module.
+2. Run `make lint validate test`.
+3. If the change is a design decision, add a note in `docs/adr/`.
 
 **Add or review mappings.** See [VERDANT integration](verdant-integration.md).
 

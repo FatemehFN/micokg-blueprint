@@ -4,7 +4,7 @@
 #
 # Note: in the Sequence Ontology, plasmid (SO:0000155) is_a replicon, NOT a
 # subclass of mobile_genetic_element (SO:0001037). Both roots are listed so that
-# plasmids and MGE subclasses both count. (Open modelling question for Day 1:
+# plasmids and MGE subclasses both count. (Open modelling question:
 # should "mobile context" be a small curated list/enum instead?)
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX obo: <http://purl.obolibrary.org/obo/>
