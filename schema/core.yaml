@@ -1,0 +1,42 @@
+id: https://w3id.org/micokg/core
+name: micokg_core
+description: >-
+  Shared base class and identifier slots. Modelling rule (ADR-0002): things that
+  already have an ontology identifier (taxa, diseases, metabolites, habitats,
+  GO terms, ARO terms) keep that identifier; micokg: identifiers are minted
+  only for instance data such as samples, observations, associations, studies.
+default_prefix: micokg
+default_range: string
+imports:
+  - linkml:types
+
+classes:
+  NamedThing:
+    abstract: true
+    class_uri: schema:Thing
+    exact_mappings:
+      - biolink:NamedThing
+    slots:
+      - id
+      - name
+      - description
+      - xref
+
+slots:
+  id:
+    identifier: true
+    range: uriorcurie
+    required: true
+    description: CURIE or IRI. Reuse ontology IDs; mint micokg:<type>/<local-id> for instances.
+  name:
+    slot_uri: rdfs:label
+    description: Human-readable label.
+  description:
+    slot_uri: dct:description
+  xref:
+    slot_uri: skos:exactMatch
+    range: uriorcurie
+    multivalued: true
+    description: >-
+      Equivalent identifiers in other resources. Prefer maintaining mappings in
+      mappings/*.sssom.tsv; use xref only for identifiers asserted by the source.

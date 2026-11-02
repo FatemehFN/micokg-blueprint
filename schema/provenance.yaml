@@ -1,0 +1,45 @@
+id: https://w3id.org/micokg/provenance
+name: micokg_provenance
+description: Studies and datasets that samples and associations come from (DCTerms / PROV).
+default_prefix: micokg
+default_range: string
+imports:
+  - linkml:types
+  - core
+
+classes:
+  Study:
+    is_a: NamedThing
+    class_uri: micokg:Study
+    close_mappings: [OBI:0000066, schema:Dataset]
+    slots:
+      - title
+      - creator
+      - license
+      - issued
+      - references
+      - knowledge_source
+
+slots:
+  title:
+    slot_uri: dct:title
+  creator:
+    slot_uri: dct:creator
+    range: uriorcurie
+    multivalued: true
+    description: ORCID identifiers.
+  license:
+    slot_uri: dct:license
+    range: uri
+  issued:
+    slot_uri: dct:issued
+    range: date
+  references:
+    slot_uri: dct:references
+    range: uriorcurie
+    multivalued: true
+    description: Publications (doi:, PMID:) describing the study.
+  knowledge_source:
+    slot_uri: micokg:knowledge_source
+    range: uriorcurie
+    description: Resource the record was ingested from, as an infores CURIE (e.g. infores:gutmdisorder).

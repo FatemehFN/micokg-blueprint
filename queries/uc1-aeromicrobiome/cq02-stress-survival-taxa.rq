@@ -1,0 +1,37 @@
+# UC1-CQ02: Which taxa detected in air carry genes for stress-survival processes
+# (sporulation, UV response, desiccation response), and in how many air samples?
+#
+# Parameter: ?stressProcess (GO terms; their subclasses also match)
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX mixs: <https://w3id.org/mixs/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT ?taxon ?taxonLabel ?stressProcess ?stressProcessLabel (COUNT(DISTINCT ?sample) AS ?nAirSamples)
+WHERE {
+  VALUES ?stressProcess {
+    obo:GO_0030435   # sporulation resulting in formation of a cellular spore
+    obo:GO_0034644   # cellular response to UV
+    obo:GO_0009269   # response to desiccation
+  }
+
+  ?sample mixs:0000014 ?sampleMedium .
+  ?sampleMedium rdfs:subClassOf* obo:ENVO_00002005 .   # air
+
+  ?observation sosa:hasFeatureOfInterest ?sample ;
+               sio:SIO_000332 ?gene ;
+               sosa:hasSimpleResult ?value .
+  FILTER (?value > 0)
+
+  ?gene a micokg:FunctionalGene ;
+        obo:RO_0000085 ?function ;
+        obo:RO_0002162 ?taxon .
+  ?function rdfs:subClassOf* ?stressProcess .
+
+  OPTIONAL { ?taxon rdfs:label ?taxonLabel }
+  OPTIONAL { ?stressProcess rdfs:label ?stressProcessLabel }
+}
+GROUP BY ?taxon ?taxonLabel ?stressProcess ?stressProcessLabel
+ORDER BY ?taxonLabel ?stressProcessLabel

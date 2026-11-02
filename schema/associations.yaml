@@ -1,0 +1,183 @@
+id: https://w3id.org/micokg/associations
+name: micokg_associations
+description: >-
+  Reified associations (ADR-0001). Each claim is a node with rdf:subject,
+  rdf:predicate and rdf:object plus context (direction, body site, environment,
+  host), evidence (ECO) and provenance (source study, observations). This lets
+  conflicting, context-dependent findings coexist. Direct subject-predicate-object
+  "shortcut" triples are materialised separately by scripts/materialise_shortcuts.rq.
+default_prefix: micokg
+default_range: string
+imports:
+  - linkml:types
+  - core
+  - enums
+  - samples_observations
+  - provenance
+
+classes:
+  Association:
+    is_a: NamedThing
+    abstract: true
+    class_uri: micokg:Association
+    exact_mappings: [biolink:Association]
+    close_mappings: [sio:SIO_000897, rdf:Statement]
+    slots:
+      - subject
+      - predicate
+      - object
+      - direction
+      - effect_size
+      - p_value
+      - anatomical_context
+      - environmental_context
+      - host_context
+      - has_evidence
+      - source_study
+      - derived_from
+      - confidence
+      - negated
+
+  TaxonDiseaseAssociation:
+    is_a: Association
+    class_uri: micokg:TaxonDiseaseAssociation
+    description: A taxon is reported as associated with (or contributing to) a disease.
+    slot_usage:
+      subject:
+        pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
+      predicate:
+        pattern: "^RO:(0002610|0003302)$"
+      object:
+        pattern: "^(MONDO|DOID|NCIT|EFO):[A-Za-z0-9_]+$"
+
+  TaxonHabitatAssociation:
+    is_a: Association
+    class_uri: micokg:TaxonHabitatAssociation
+    slot_usage:
+      subject:
+        pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
+      predicate:
+        pattern: "^RO:0002303$"
+      object:
+        pattern: "^ENVO:\\d{8}$"
+
+  TaxonHostInteraction:
+    is_a: Association
+    class_uri: micokg:TaxonHostInteraction
+    slot_usage:
+      subject:
+        pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
+      predicate:
+        pattern: "^RO:(0002454|0002437)$"
+      object:
+        pattern: "^NCBITaxon:\\d+$"
+
+  TaxonMetaboliteAssociation:
+    is_a: Association
+    class_uri: micokg:TaxonMetaboliteAssociation
+    description: RO:0002234 has output = produces; RO:0002233 has input = consumes.
+    slot_usage:
+      subject:
+        pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
+      predicate:
+        pattern: "^RO:(0002234|0002233|0002610)$"
+      object:
+        pattern: "^CHEBI:\\d+$"
+
+  DietTaxonAssociation:
+    is_a: Association
+    class_uri: micokg:DietTaxonAssociation
+    slot_usage:
+      subject:
+        pattern: "^(FOODON|CHEBI|NCIT|micokg):.+$"
+      predicate:
+        pattern: "^RO:0002610$"
+      object:
+        pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
+
+  DietMetaboliteAssociation:
+    is_a: Association
+    class_uri: micokg:DietMetaboliteAssociation
+    slot_usage:
+      subject:
+        pattern: "^(FOODON|CHEBI|NCIT|micokg):.+$"
+      predicate:
+        pattern: "^RO:0002610$"
+      object:
+        pattern: "^CHEBI:\\d+$"
+
+  MetaboliteDiseaseAssociation:
+    is_a: Association
+    class_uri: micokg:MetaboliteDiseaseAssociation
+    slot_usage:
+      subject:
+        pattern: "^CHEBI:\\d+$"
+      predicate:
+        pattern: "^RO:(0002610|0003302)$"
+      object:
+        pattern: "^(MONDO|DOID|NCIT|EFO):[A-Za-z0-9_]+$"
+
+slots:
+  subject:
+    slot_uri: rdf:subject
+    range: uriorcurie
+    required: true
+  predicate:
+    slot_uri: rdf:predicate
+    range: uriorcurie
+    required: true
+    description: >-
+      Relation from RO. Allowed: RO:0002610 correlated with, RO:0003302 causes or
+      contributes to condition, RO:0002234 has output, RO:0002233 has input,
+      RO:0002303 has habitat, RO:0002454 has host, RO:0002437 biotically interacts with.
+  object:
+    slot_uri: rdf:object
+    range: uriorcurie
+    required: true
+  direction:
+    slot_uri: micokg:direction
+    range: DirectionEnum
+  effect_size:
+    slot_uri: micokg:effect_size
+    range: float
+  p_value:
+    slot_uri: micokg:p_value
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+  anatomical_context:
+    slot_uri: micokg:anatomical_context
+    range: uriorcurie
+    pattern: "^UBERON:\\d{7}$"
+  environmental_context:
+    slot_uri: micokg:environmental_context
+    range: uriorcurie
+    pattern: "^ENVO:\\d{8}$"
+  host_context:
+    slot_uri: micokg:host_context
+    range: uriorcurie
+    pattern: "^NCBITaxon:\\d+$"
+  has_evidence:
+    slot_uri: micokg:has_evidence
+    range: uriorcurie
+    multivalued: true
+    pattern: "^ECO:\\d{7}$"
+    bindings:
+      - range: EvidenceEnum
+        obligation_level: RECOMMENDED
+  source_study:
+    slot_uri: dct:source
+    range: Study
+    required: true
+  derived_from:
+    slot_uri: prov:wasDerivedFrom
+    range: Observation
+    multivalued: true
+  confidence:
+    slot_uri: micokg:confidence
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+  negated:
+    slot_uri: micokg:negated
+    range: boolean

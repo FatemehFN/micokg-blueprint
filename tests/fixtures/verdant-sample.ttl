@@ -1,0 +1,28 @@
+# FAKE VERDANT output used to test scripts/skos_to_sssom.py before real output exists.
+# Subjects are free-text habitat/sample labels found in legacy microbiome KGs,
+# given temporary micokg:term/... identifiers.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sssom: <https://w3id.org/sssom/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/micokg/term/sample/stool> skos:prefLabel "stool" .
+<https://w3id.org/micokg/term/habitat/sewage> skos:prefLabel "sewage" .
+<https://w3id.org/micokg/term/habitat/indoor-air> skos:prefLabel "indoor air" .
+<http://purl.obolibrary.org/obo/UBERON_0001988> skos:prefLabel "feces" .
+<http://purl.obolibrary.org/obo/ENVO_00002001> skos:prefLabel "waste water" .
+<http://purl.obolibrary.org/obo/ENVO_00002005> skos:prefLabel "air" .
+
+[] a owl:Axiom ;
+   owl:annotatedSource <https://w3id.org/micokg/term/sample/stool> ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget <http://purl.obolibrary.org/obo/UBERON_0001988> ;
+   sssom:confidence "0.94"^^xsd:double .
+
+[] a owl:Axiom ;
+   owl:annotatedSource <https://w3id.org/micokg/term/habitat/sewage> ;
+   owl:annotatedProperty skos:closeMatch ;
+   owl:annotatedTarget <http://purl.obolibrary.org/obo/ENVO_00002001> ;
+   sssom:confidence "0.81"^^xsd:double .
+
+<https://w3id.org/micokg/term/habitat/indoor-air> skos:broadMatch <http://purl.obolibrary.org/obo/ENVO_00002005> .

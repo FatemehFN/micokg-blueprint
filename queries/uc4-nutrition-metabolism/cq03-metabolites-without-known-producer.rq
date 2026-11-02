@@ -1,0 +1,23 @@
+# UC4-CQ03 (gap analysis): Which metabolites change after a dietary exposure but
+# have no producing taxon recorded in the KG?
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT DISTINCT ?food ?metabolite ?metaboliteLabel ?direction
+WHERE {
+  ?dietMetabolite a micokg:DietMetaboliteAssociation ;
+                  rdf:subject ?food ;
+                  rdf:object ?metabolite ;
+                  micokg:direction ?direction .
+
+  FILTER NOT EXISTS {
+    ?taxonMetabolite a micokg:TaxonMetaboliteAssociation ;
+                     rdf:predicate obo:RO_0002234 ;
+                     rdf:object ?metabolite .
+  }
+
+  OPTIONAL { ?metabolite rdfs:label ?metaboliteLabel }
+}
+ORDER BY ?food ?metaboliteLabel

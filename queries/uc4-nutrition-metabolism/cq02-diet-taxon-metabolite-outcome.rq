@@ -1,0 +1,24 @@
+# UC4-CQ02: Follow the chain food -> taxon (increased) -> metabolite (produced)
+# -> host outcome (disease). Which outcomes are reached, and in which direction?
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT DISTINCT ?food ?taxon ?metabolite ?outcome ?outcomeDirection
+WHERE {
+  ?dietTaxon a micokg:DietTaxonAssociation ;
+             rdf:subject ?food ;
+             rdf:object ?taxon ;
+             micokg:direction "increased" .
+
+  ?taxonMetabolite a micokg:TaxonMetaboliteAssociation ;
+                   rdf:subject ?taxon ;
+                   rdf:predicate obo:RO_0002234 ;
+                   rdf:object ?metabolite .
+
+  ?metaboliteOutcome a micokg:MetaboliteDiseaseAssociation ;
+                     rdf:subject ?metabolite ;
+                     rdf:object ?outcome ;
+                     micokg:direction ?outcomeDirection .
+}
+ORDER BY ?food ?taxon ?outcome

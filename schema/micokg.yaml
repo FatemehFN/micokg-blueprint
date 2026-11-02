@@ -1,0 +1,186 @@
+id: https://w3id.org/micokg
+name: micokg
+title: MiCoKnowGraph schema
+description: >-
+  Blueprint schema for the ELIXIR Microbiome Community collaborative knowledge
+  graph (BioHackathon Europe 2026, Project 16). Four layers: ontology-backed
+  entities, SOSA observations on samples, reified associations carrying context
+  and evidence, and SSSOM mappings (kept outside the schema, in mappings/).
+license: https://creativecommons.org/licenses/by/4.0/
+version: 0.1.0
+see_also:
+  - https://github.com/elixir-europe/biohackathon-projects-2026/blob/main/16.md
+
+prefixes:
+  micokg: https://w3id.org/micokg/
+  linkml: https://w3id.org/linkml/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  dct: http://purl.org/dc/terms/
+  prov: http://www.w3.org/ns/prov#
+  schema: http://schema.org/
+  sosa: http://www.w3.org/ns/sosa/
+  qudt: http://qudt.org/schema/qudt/
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+  sio: http://semanticscience.org/resource/
+  mixs: https://w3id.org/mixs/
+  biolink: https://w3id.org/biolink/vocab/
+  dwc: http://rs.tdwg.org/dwc/terms/
+  infores: https://w3id.org/biolink/infores/
+  ORCID: https://orcid.org/
+  doi: https://doi.org/
+  PMID: http://www.ncbi.nlm.nih.gov/pubmed/
+  obo: http://purl.obolibrary.org/obo/
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  GTDB: https://gtdb.ecogenomic.org/tree?r=
+  TAXRANK: http://purl.obolibrary.org/obo/TAXRANK_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  DOID: http://purl.obolibrary.org/obo/DOID_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  HMDB: https://hmdb.ca/metabolites/
+  GO: http://purl.obolibrary.org/obo/GO_
+  SO: http://purl.obolibrary.org/obo/SO_
+  ARO: http://purl.obolibrary.org/obo/ARO_
+  RO: http://purl.obolibrary.org/obo/RO_
+  ECO: http://purl.obolibrary.org/obo/ECO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  ExO: http://purl.obolibrary.org/obo/ExO_
+  GAZ: http://purl.obolibrary.org/obo/GAZ_
+  UO: http://purl.obolibrary.org/obo/UO_
+  KEGG.ORTHOLOGY: https://www.kegg.jp/entry/
+  EC: https://www.enzyme-database.org/query.php?ec=
+
+default_prefix: micokg
+default_range: string
+
+imports:
+  - linkml:types
+  - core
+  - enums
+  - entities
+  - samples_observations
+  - provenance
+  - associations
+
+classes:
+  Container:
+    tree_root: true
+    class_uri: micokg:Container
+    description: >-
+      A bundle of records (one YAML file). Used for toy data and for ingesting
+      slices of existing resources. Each association type has its own list so
+      that contributors never need a type designator.
+    slots:
+      - studies
+      - samples
+      - hosts
+      - observations
+      - taxa
+      - genes
+      - amr_determinants
+      - metabolites
+      - diseases
+      - foods
+      - taxon_disease_associations
+      - taxon_habitat_associations
+      - taxon_host_interactions
+      - taxon_metabolite_associations
+      - diet_taxon_associations
+      - diet_metabolite_associations
+      - metabolite_disease_associations
+
+slots:
+  studies:
+    description: Studies or datasets the records come from.
+    range: Study
+    multivalued: true
+    inlined_as_list: true
+  samples:
+    description: Physical samples (environmental, host-associated, food).
+    range: Sample
+    multivalued: true
+    inlined_as_list: true
+  hosts:
+    description: Individual host organisms or participants.
+    range: Host
+    multivalued: true
+    inlined_as_list: true
+  observations:
+    description: Per-sample measurements (SOSA observations).
+    range: Observation
+    multivalued: true
+    inlined_as_list: true
+  taxa:
+    description: Taxon records, only needed to add labels or rank.
+    range: Taxon
+    multivalued: true
+    inlined_as_list: true
+  genes:
+    description: Functional gene records.
+    range: FunctionalGene
+    multivalued: true
+    inlined_as_list: true
+  amr_determinants:
+    description: Antimicrobial resistance determinant records.
+    range: AMRDeterminant
+    multivalued: true
+    inlined_as_list: true
+  metabolites:
+    description: Metabolite records, only needed to add labels or roles.
+    range: Metabolite
+    multivalued: true
+    inlined_as_list: true
+  diseases:
+    description: Disease records, only needed to add labels.
+    range: Disease
+    multivalued: true
+    inlined_as_list: true
+  foods:
+    description: Food or dietary intervention records.
+    range: FoodItem
+    multivalued: true
+    inlined_as_list: true
+  taxon_disease_associations:
+    description: Taxon to disease claims.
+    range: TaxonDiseaseAssociation
+    multivalued: true
+    inlined_as_list: true
+  taxon_habitat_associations:
+    description: Taxon to habitat claims.
+    range: TaxonHabitatAssociation
+    multivalued: true
+    inlined_as_list: true
+  taxon_host_interactions:
+    description: Taxon to host organism claims.
+    range: TaxonHostInteraction
+    multivalued: true
+    inlined_as_list: true
+  taxon_metabolite_associations:
+    description: Taxon produces/consumes metabolite claims.
+    range: TaxonMetaboliteAssociation
+    multivalued: true
+    inlined_as_list: true
+  diet_taxon_associations:
+    description: Diet or food to taxon abundance claims.
+    range: DietTaxonAssociation
+    multivalued: true
+    inlined_as_list: true
+  diet_metabolite_associations:
+    description: Diet or food to metabolite level claims.
+    range: DietMetaboliteAssociation
+    multivalued: true
+    inlined_as_list: true
+  metabolite_disease_associations:
+    description: Metabolite to disease claims.
+    range: MetaboliteDiseaseAssociation
+    multivalued: true
+    inlined_as_list: true

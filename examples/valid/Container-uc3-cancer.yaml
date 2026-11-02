@@ -1,0 +1,184 @@
+# UC3 - Host-microbiome interactions in cancer (reference use case).
+# TOY DATA: identifiers of ontology terms are real, but studies, hosts,
+# samples and all numbers are invented to exercise the competency questions.
+#
+# Deliberate test situations:
+#  * Bacteroides fragilis has CONFLICTING findings (increased in study A stool,
+#    decreased in study B tissue)                                   -> CQ3.2
+#  * Escherichia coli -> colorectal cancer is coded with DOID:9256, reachable
+#    only through mappings/curated/disease.sssom.tsv (DOID -> MONDO)  -> CQ3.1
+#  * Fusobacterium nucleatum is linked to colorectal ADENOCARCINOMA,
+#    a subclass of colorectal cancer (needs ontology slims)          -> CQ3.1
+#  * colibactin (produced by E. coli pks+) has the CHEBI role genotoxin -> CQ3.3
+
+studies:
+  - id: micokg:study/UC3-A
+    title: Toy faecal metagenomics case-control study of colorectal cancer
+    creator: [ORCID:0000-0000-0000-0000]
+    license: https://creativecommons.org/licenses/by/4.0/
+    issued: "2025-03-01"
+    knowledge_source: infores:micokg-toy
+  - id: micokg:study/UC3-B
+    title: Toy tumour-tissue amplicon study of colorectal cancer
+    license: https://creativecommons.org/licenses/by/4.0/
+    issued: "2024-06-15"
+    knowledge_source: infores:micokg-toy
+  - id: micokg:study/UC3-C
+    title: Toy literature-curated resource (disease coded in DOID)
+    references: [PMID:00000000]
+    knowledge_source: infores:micokg-toy
+
+taxa:
+  - id: NCBITaxon:851
+    name: Fusobacterium nucleatum
+    taxon_rank: TAXRANK:0000006
+  - id: NCBITaxon:817
+    name: Bacteroides fragilis
+    taxon_rank: TAXRANK:0000006
+  - id: NCBITaxon:562
+    name: Escherichia coli
+    taxon_rank: TAXRANK:0000006
+  - id: NCBITaxon:853
+    name: Faecalibacterium prausnitzii
+    taxon_rank: TAXRANK:0000006
+
+diseases:
+  - id: MONDO:0005575
+    name: colorectal cancer
+  - id: MONDO:0005008
+    name: colorectal adenocarcinoma
+  - id: DOID:9256
+    name: colorectal cancer
+
+metabolites:
+  - id: CHEBI:156303
+    name: colibactin
+    has_role: [CHEBI:50902, CHEBI:50903]   # genotoxin, carcinogenic agent
+
+hosts:
+  - id: micokg:host/UC3-P01
+    in_taxon: NCBITaxon:9606
+    has_disease: [MONDO:0005575]
+    sex: PATO:0000383
+    age_years: 64
+  - id: micokg:host/UC3-P02
+    in_taxon: NCBITaxon:9606
+    sex: PATO:0000384
+    age_years: 61
+
+samples:
+  - id: micokg:sample/UC3-S01
+    part_of_study: micokg:study/UC3-A
+    compartment: human
+    host: micokg:host/UC3-P01
+    host_body_site: UBERON:0001988     # feces
+    env_medium: UBERON:0001988
+    collection_date: "2024-02-10"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+  - id: micokg:sample/UC3-S02
+    part_of_study: micokg:study/UC3-A
+    compartment: human
+    host: micokg:host/UC3-P02
+    host_body_site: UBERON:0001988
+    env_medium: UBERON:0001988
+    collection_date: "2024-02-11"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+  - id: micokg:sample/UC3-S03
+    part_of_study: micokg:study/UC3-B
+    compartment: human
+    host: micokg:host/UC3-P01
+    host_body_site: UBERON:0001155     # colon
+    env_medium: UBERON:0001155
+    collection_date: "2023-11-20"
+
+observations:
+  - id: micokg:obs/UC3-O01
+    has_feature_of_interest: micokg:sample/UC3-S01
+    observed_property: micokg:property/relative_abundance
+    is_about: NCBITaxon:851
+    simple_result: 0.042
+    used_procedure: OBI:0002623        # whole metagenome sequencing assay
+  - id: micokg:obs/UC3-O02
+    has_feature_of_interest: micokg:sample/UC3-S02
+    observed_property: micokg:property/relative_abundance
+    is_about: NCBITaxon:851
+    simple_result: 0.002
+    used_procedure: OBI:0002623
+  - id: micokg:obs/UC3-O03
+    has_feature_of_interest: micokg:sample/UC3-S03
+    observed_property: micokg:property/relative_abundance
+    is_about: NCBITaxon:817
+    simple_result: 0.004
+    used_procedure: OBI:0002767        # amplicon sequencing assay
+
+taxon_disease_associations:
+  - id: micokg:assoc/UC3-A01
+    subject: NCBITaxon:851
+    predicate: RO:0002610
+    object: MONDO:0005575
+    direction: increased
+    effect_size: 2.1
+    p_value: 0.001
+    anatomical_context: UBERON:0001988
+    host_context: NCBITaxon:9606
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC3-A
+    derived_from: [micokg:obs/UC3-O01, micokg:obs/UC3-O02]
+    confidence: 0.9
+  - id: micokg:assoc/UC3-A02
+    subject: NCBITaxon:851
+    predicate: RO:0002610
+    object: MONDO:0005008              # subclass of colorectal cancer
+    direction: increased
+    anatomical_context: UBERON:0001155
+    host_context: NCBITaxon:9606
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC3-B
+    confidence: 0.8
+  - id: micokg:assoc/UC3-A03
+    subject: NCBITaxon:817
+    predicate: RO:0002610
+    object: MONDO:0005575
+    direction: increased
+    anatomical_context: UBERON:0001988
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC3-A
+    confidence: 0.7
+  - id: micokg:assoc/UC3-A04
+    subject: NCBITaxon:817
+    predicate: RO:0002610
+    object: MONDO:0005575
+    direction: decreased               # conflicts with UC3-A03
+    anatomical_context: UBERON:0001155
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC3-B
+    derived_from: [micokg:obs/UC3-O03]
+    confidence: 0.6
+  - id: micokg:assoc/UC3-A05
+    subject: NCBITaxon:853
+    predicate: RO:0002610
+    object: MONDO:0005575
+    direction: decreased
+    anatomical_context: UBERON:0001988
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC3-A
+    confidence: 0.85
+  - id: micokg:assoc/UC3-A06
+    subject: NCBITaxon:562
+    predicate: RO:0003302              # causes or contributes to condition
+    object: DOID:9256                  # only linked to MONDO via SSSOM
+    direction: increased
+    anatomical_context: UBERON:0001155
+    has_evidence: [ECO:0000033]
+    source_study: micokg:study/UC3-C
+    confidence: 0.75
+
+taxon_metabolite_associations:
+  - id: micokg:assoc/UC3-M01
+    subject: NCBITaxon:562
+    predicate: RO:0002234              # has output (produces)
+    object: CHEBI:156303               # colibactin
+    has_evidence: [ECO:0000033]
+    source_study: micokg:study/UC3-C

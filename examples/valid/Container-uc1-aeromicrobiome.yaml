@@ -1,0 +1,110 @@
+# UC1 - Aeromicrobiome functional characterisation.
+# TOY DATA: ontology identifiers are real; studies, samples, gene records and
+# numbers are invented.
+#
+# Deliberate test situations:
+#  * the same UV-response gene record is detected in an outdoor and an indoor sample -> CQ01 splits by env_local_scale
+#  * sporulation / UV / desiccation functions carried by different taxa              -> CQ02
+#  * Klebsiella pneumoniae detected in hospital air has a human-host interaction      -> CQ03 (bridge to UC2/UC3)
+
+studies:
+  - id: micokg:study/UC1-A
+    title: Toy indoor/outdoor air metagenomics survey
+    license: https://creativecommons.org/licenses/by/4.0/
+    issued: "2025-05-20"
+    knowledge_source: infores:micokg-toy
+  - id: micokg:study/UC1-B
+    title: Toy literature-curated host range records
+    knowledge_source: infores:micokg-toy
+
+samples:
+  - id: micokg:sample/UC1-S01
+    part_of_study: micokg:study/UC1-A
+    compartment: environment
+    env_broad_scale: ENVO:01000249     # urban biome
+    env_local_scale: ENVO:01000313     # anthropogenic environment (outdoor street level)
+    env_medium: ENVO:00002005          # air
+    collection_date: "2025-01-10"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+  - id: micokg:sample/UC1-S02
+    part_of_study: micokg:study/UC1-A
+    compartment: environment
+    env_broad_scale: ENVO:01000249
+    env_local_scale: ENVO:00000073     # building (indoor)
+    env_medium: ENVO:00002005
+    collection_date: "2025-01-10"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+  - id: micokg:sample/UC1-S03
+    part_of_study: micokg:study/UC1-A
+    compartment: environment
+    env_broad_scale: ENVO:01000249
+    env_local_scale: ENVO:00002173     # hospital
+    env_medium: ENVO:00002005
+    collection_date: "2025-01-11"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+
+genes:
+  - id: micokg:gene/UC1-G01
+    gene_symbol: spo0A
+    has_function: [GO:0030435]         # sporulation resulting in formation of a cellular spore
+    in_taxon: NCBITaxon:1423           # Bacillus subtilis
+    genomic_context: SO:0000340        # chromosome
+  - id: micokg:gene/UC1-G02
+    gene_symbol: uvrA
+    has_function: [GO:0034644]         # cellular response to UV
+    in_taxon: NCBITaxon:1270           # Micrococcus luteus
+    genomic_context: SO:0000340
+  - id: micokg:gene/UC1-G03
+    gene_symbol: otsA
+    has_function: [GO:0009269]         # response to desiccation
+    in_taxon: NCBITaxon:1270
+    genomic_context: SO:0000340
+
+observations:
+  - id: micokg:obs/UC1-O01
+    has_feature_of_interest: micokg:sample/UC1-S01
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC1-G01
+    simple_result: 1
+    used_procedure: OBI:0002623
+  - id: micokg:obs/UC1-O02
+    has_feature_of_interest: micokg:sample/UC1-S01
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC1-G02
+    simple_result: 1
+    used_procedure: OBI:0002623
+  - id: micokg:obs/UC1-O03
+    has_feature_of_interest: micokg:sample/UC1-S02
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC1-G02
+    simple_result: 1
+    used_procedure: OBI:0002623
+  - id: micokg:obs/UC1-O04
+    has_feature_of_interest: micokg:sample/UC1-S02
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC1-G03
+    simple_result: 1
+    used_procedure: OBI:0002623
+  - id: micokg:obs/UC1-O05
+    has_feature_of_interest: micokg:sample/UC1-S03
+    observed_property: micokg:property/relative_abundance
+    is_about: NCBITaxon:573            # Klebsiella pneumoniae
+    simple_result: 0.012
+    used_procedure: OBI:0002623
+  - id: micokg:obs/UC1-O06
+    has_feature_of_interest: micokg:sample/UC1-S03
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC1-G01
+    simple_result: 0                   # tested, not detected
+    used_procedure: OBI:0002623
+
+taxon_host_interactions:
+  - id: micokg:assoc/UC1-H01
+    subject: NCBITaxon:573
+    predicate: RO:0002454              # has host
+    object: NCBITaxon:9606
+    has_evidence: [ECO:0000033]
+    source_study: micokg:study/UC1-B

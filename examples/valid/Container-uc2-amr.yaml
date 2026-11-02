@@ -1,0 +1,144 @@
+# UC2 - Antimicrobial resistance transmission (One Health).
+# TOY DATA: ontology identifiers are real; studies, samples, gene records,
+# dates and numbers are invented.
+#
+# Deliberate test situations:
+#  * tet(M) and NDM-1 found in Barcelona waste water, then later in human stool in
+#    Barcelona, each in a DIFFERENT host taxon                        -> CQ01, CQ02
+#  * an NDM-1 human sample collected BEFORE the waste-water sample     -> must not appear in CQ01
+#  * tet(M) on a chromosome in a pig sample (not mobile)               -> excluded from CQ02
+#  * tet(M) detected in human, animal and environment compartments     -> CQ03
+
+studies:
+  - id: micokg:study/UC2-WW
+    title: Toy waste-water resistome surveillance
+    license: https://creativecommons.org/licenses/by/4.0/
+    knowledge_source: infores:micokg-toy
+  - id: micokg:study/UC2-CLIN
+    title: Toy hospital patient gut resistome study
+    knowledge_source: infores:micokg-toy
+  - id: micokg:study/UC2-FARM
+    title: Toy pig farm resistome study
+    knowledge_source: infores:micokg-toy
+
+hosts:
+  - id: micokg:host/UC2-P01
+    in_taxon: NCBITaxon:9606
+  - id: micokg:host/UC2-P02
+    in_taxon: NCBITaxon:9606
+  - id: micokg:host/UC2-PIG01
+    in_taxon: NCBITaxon:9823           # Sus scrofa
+
+samples:
+  - id: micokg:sample/UC2-S01
+    part_of_study: micokg:study/UC2-WW
+    compartment: environment
+    env_broad_scale: ENVO:01000249     # urban biome
+    env_local_scale: ENVO:00002043     # wastewater treatment plant
+    env_medium: ENVO:00002001          # waste water
+    collection_date: "2024-01-15"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+  - id: micokg:sample/UC2-S02
+    part_of_study: micokg:study/UC2-CLIN
+    compartment: human
+    host: micokg:host/UC2-P01
+    host_body_site: UBERON:0001988
+    env_medium: UBERON:0001988
+    collection_date: "2024-03-02"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+  - id: micokg:sample/UC2-S03
+    part_of_study: micokg:study/UC2-CLIN
+    compartment: human
+    host: micokg:host/UC2-P02
+    host_body_site: UBERON:0001988
+    env_medium: UBERON:0001988
+    collection_date: "2023-12-01"      # before the waste-water sample
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+  - id: micokg:sample/UC2-S04
+    part_of_study: micokg:study/UC2-FARM
+    compartment: animal
+    host: micokg:host/UC2-PIG01
+    host_body_site: UBERON:0001988
+    env_medium: UBERON:0001988
+    collection_date: "2024-02-01"
+    geo_loc_name: "Spain:Barcelona"
+    geo_location: GAZ:00115857
+
+amr_determinants:
+  - id: micokg:gene/UC2-G01
+    gene_symbol: tet(M)
+    aro_class: ARO:3000186
+    confers_resistance_to: [ARO:3000050]   # tetracycline antibiotic
+    resistance_mechanism: ARO:0001003      # antibiotic target protection
+    in_taxon: NCBITaxon:562                # Escherichia coli
+    genomic_context: SO:0000155            # plasmid
+  - id: micokg:gene/UC2-G02
+    gene_symbol: tet(M)
+    aro_class: ARO:3000186
+    confers_resistance_to: [ARO:3000050]
+    resistance_mechanism: ARO:0001003
+    in_taxon: NCBITaxon:1352               # Enterococcus faecium
+    genomic_context: SO:0000155
+  - id: micokg:gene/UC2-G03
+    gene_symbol: blaNDM-1
+    aro_class: ARO:3000589
+    confers_resistance_to: [ARO:0000020]   # carbapenem
+    resistance_mechanism: ARO:0001004      # antibiotic inactivation
+    in_taxon: NCBITaxon:573                # Klebsiella pneumoniae
+    genomic_context: SO:0000155
+  - id: micokg:gene/UC2-G04
+    gene_symbol: blaNDM-1
+    aro_class: ARO:3000589
+    confers_resistance_to: [ARO:0000020]
+    resistance_mechanism: ARO:0001004
+    in_taxon: NCBITaxon:562
+    genomic_context: SO:0000155
+  - id: micokg:gene/UC2-G05
+    gene_symbol: tet(M)
+    aro_class: ARO:3000186
+    confers_resistance_to: [ARO:3000050]
+    resistance_mechanism: ARO:0001003
+    in_taxon: NCBITaxon:1352
+    genomic_context: SO:0000340            # chromosome
+  - id: micokg:gene/UC2-G06
+    gene_symbol: blaNDM-1
+    aro_class: ARO:3000589
+    confers_resistance_to: [ARO:0000020]
+    resistance_mechanism: ARO:0001004
+    in_taxon: NCBITaxon:573
+    genomic_context: SO:0000155
+
+observations:
+  - id: micokg:obs/UC2-O01
+    has_feature_of_interest: micokg:sample/UC2-S01
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC2-G01
+    simple_result: 1
+  - id: micokg:obs/UC2-O02
+    has_feature_of_interest: micokg:sample/UC2-S01
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC2-G03
+    simple_result: 1
+  - id: micokg:obs/UC2-O03
+    has_feature_of_interest: micokg:sample/UC2-S02
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC2-G02
+    simple_result: 1
+  - id: micokg:obs/UC2-O04
+    has_feature_of_interest: micokg:sample/UC2-S02
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC2-G04
+    simple_result: 1
+  - id: micokg:obs/UC2-O05
+    has_feature_of_interest: micokg:sample/UC2-S04
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC2-G05
+    simple_result: 1
+  - id: micokg:obs/UC2-O06
+    has_feature_of_interest: micokg:sample/UC2-S03
+    observed_property: micokg:property/gene_presence
+    is_about: micokg:gene/UC2-G06
+    simple_result: 1

@@ -1,0 +1,25 @@
+prefix	name	role_in_micokg	root_or_example_terms	in_proposal	status_in_blueprint	licence	rationale_or_notes
+NCBITaxon	NCBI Taxonomy	Taxon identifiers	NCBITaxon:131567 cellular organisms	no	used	TODO	De facto standard for taxa; GTDB needed for MAGs
+GTDB	Genome Taxonomy Database	Taxon identifiers for MAGs	-	no	accepted (id_prefixes)	TODO	Needs NCBITaxon mapping file
+ENVO	Environment Ontology	env_broad_scale / env_local_scale / env_medium values	ENVO:00000428 biome; ENVO:01000254 environmental system; ENVO:00010483 environmental material	yes	used	TODO	Required by MIxS
+UBERON	Uberon anatomy	Host body site, anatomical context	UBERON:0001062 anatomical entity	yes	used	TODO
+MONDO	Mondo Disease Ontology	Disease identifiers (preferred, proposal)	MONDO:0000001 disease	no	used	TODO	Publishes SSSOM mappings to DOID/NCIT/EFO; decide vs DO on Day 1
+DOID	Human Disease Ontology	Disease identifiers	DOID:4 disease	yes	accepted, bridged via SSSOM	TODO	Named in proposal
+NCIT	NCI Thesaurus	Disease / clinical terms	-	yes	accepted	TODO	Useful for clinical and cancer detail
+EFO	Experimental Factor Ontology	Disease / phenotype / experimental factors	-	yes	accepted	TODO
+CHEBI	ChEBI	Metabolites, roles, antimicrobial agents, food components	CHEBI:25212 metabolite; CHEBI:50902 genotoxin	no	used	TODO
+GO	Gene Ontology	Gene functions / processes	GO:0008150 biological_process	yes	used	TODO
+SO	Sequence Ontology	Genomic context (plasmid, chromosome, MGE)	SO:0000155 plasmid; SO:0001037 mobile_genetic_element	no	used	TODO	Plasmid is not under mobile_genetic_element (see ADR-0003)
+ARO	Antibiotic Resistance Ontology (CARD)	AMR determinants, drug classes, mechanisms	ARO:3000000 determinant of antibiotic resistance	no	used	TODO
+ECO	Evidence & Conclusion Ontology	Evidence type of associations	ECO:0000269; ECO:0000033	no	used	TODO
+OBI	Ontology for Biomedical Investigations	Assays / procedures	OBI:0002623 whole metagenome sequencing assay	no	used	TODO
+FOODON	FoodOn	Foods and diets	FOODON:00002403 food material	no	used	TODO	Align with Project 19 exposome mappings
+ExO	Exposure Ontology	Dietary / environmental exposures	ExO:0000002 exposure event	no	mapped only	TODO	Align with Project 19
+PATO	Phenotype And Trait Ontology	Host sex	PATO:0000383 female	no	used	TODO
+RO	Relation Ontology	Biological relations (predicates)	RO:0002610 correlated with; RO:0002234 has output	no	used	TODO
+SIO	Semanticscience Integrated Ontology	is about (Observation); association class mapping	SIO:000332 is about; SIO:000897 association	yes	used (2 properties)	TODO
+SOSA	Sensor, Observation, Sample, and Actuator	Samples and observations	sosa:Sample; sosa:Observation	yes	used	W3C
+DCT	DCMI Metadata Terms	Provenance and study metadata	dct:source; dct:title	yes	used	DCMI
+MIxS	Minimum Information about any (x) Sequence	Sample environment and collection slots	MIXS:0000014 env_medium	no	used (slot URIs)	TODO	Aligns with MGnify / ENA metadata
+TAXRANK	Taxonomic Rank Vocabulary	Taxon rank	TAXRANK:0000006 species	no	used	TODO
+GAZ	Gazetteer	Place identifiers for joins	GAZ:00115857 Barcelona	no	used	TODO	Consider GeoNames as alternative

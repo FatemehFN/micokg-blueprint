@@ -1,0 +1,35 @@
+# UC1-CQ03: Which taxa detected in air samples are known to have humans as a host,
+# and in which samples and settings were they detected? (Bridges UC1 to UC2/UC3.)
+#
+# Parameter: ?host (default NCBITaxon:9606 Homo sapiens)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX mixs: <https://w3id.org/mixs/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT DISTINCT ?taxon ?taxonLabel ?sample ?localScale ?localScaleLabel
+WHERE {
+  VALUES ?host { obo:NCBITaxon_9606 }
+
+  ?sample mixs:0000014 ?sampleMedium ;
+          mixs:0000013 ?localScale .
+  ?sampleMedium rdfs:subClassOf* obo:ENVO_00002005 .   # air
+
+  ?observation sosa:hasFeatureOfInterest ?sample ;
+               sosa:observedProperty <https://w3id.org/micokg/property/relative_abundance> ;
+               sio:SIO_000332 ?taxon ;
+               sosa:hasSimpleResult ?abundance .
+  FILTER (?abundance > 0)
+
+  ?interaction a micokg:TaxonHostInteraction ;
+               rdf:subject ?taxon ;
+               rdf:object ?host .
+  FILTER NOT EXISTS { ?interaction micokg:negated true }
+
+  OPTIONAL { ?taxon rdfs:label ?taxonLabel }
+  OPTIONAL { ?localScale rdfs:label ?localScaleLabel }
+}
+ORDER BY ?taxonLabel ?sample

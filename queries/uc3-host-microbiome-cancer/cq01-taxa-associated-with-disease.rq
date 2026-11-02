@@ -1,0 +1,37 @@
+# UC3-CQ01: Which taxa are reported as associated with colorectal cancer, including
+# its subtypes and equivalent identifiers from other disease ontologies? For each
+# taxon and direction: body sites, evidence types and number of independent studies.
+#
+# Parameter: ?queryDisease (default MONDO:0005575 colorectal cancer)
+#
+# How the disease match works:
+#   ?disease (skos:exactMatch|^skos:exactMatch)?  -> optionally hop across an SSSOM mapping (DOID/NCIT -> MONDO)
+#   /rdfs:subClassOf*                             -> then walk up the ontology hierarchy (subtypes)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT ?taxon ?taxonLabel ?direction
+       (COUNT(DISTINCT ?study) AS ?nStudies)
+       (GROUP_CONCAT(DISTINCT STR(?site); separator="|") AS ?sites)
+       (GROUP_CONCAT(DISTINCT STR(?evidence); separator="|") AS ?evidenceTypes)
+WHERE {
+  VALUES ?queryDisease { obo:MONDO_0005575 }
+
+  ?association a micokg:TaxonDiseaseAssociation ;
+               rdf:subject ?taxon ;
+               rdf:object ?disease ;
+               micokg:direction ?direction ;
+               dct:source ?study .
+  ?disease (skos:exactMatch|^skos:exactMatch)?/rdfs:subClassOf* ?queryDisease .
+  FILTER NOT EXISTS { ?association micokg:negated true }
+
+  OPTIONAL { ?association micokg:anatomical_context ?site }
+  OPTIONAL { ?association micokg:has_evidence ?evidence }
+  OPTIONAL { ?taxon rdfs:label ?taxonLabel }
+}
+GROUP BY ?taxon ?taxonLabel ?direction
+ORDER BY ?taxonLabel ?direction

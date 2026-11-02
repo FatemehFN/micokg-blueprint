@@ -1,0 +1,17 @@
+# Directory ownership per hackathon subgroup (see ORGANISING.md).
+# Replace the placeholder team handles once the GitHub organisation and teams exist,
+# then uncomment. GitHub requests reviews from these owners automatically.
+#
+# /schema/            @OWNER/group-a-core-schema
+# /docs/adr/          @OWNER/group-a-core-schema
+# /landscape/         @OWNER/group-b-landscape
+# /mappings/          @OWNER/group-c-mappings
+# /scripts/skos_to_sssom.py  @OWNER/group-c-mappings
+# /queries/uc1-aeromicrobiome/           @OWNER/squad-uc1
+# /queries/uc2-amr-transmission/         @OWNER/squad-uc2
+# /queries/uc3-host-microbiome-cancer/   @OWNER/squad-uc3
+# /queries/uc4-nutrition-metabolism/     @OWNER/squad-uc4
+# /.github/           @OWNER/group-e-infra
+# /scripts/           @OWNER/group-e-infra
+# /tests/             @OWNER/group-e-infra
+# /paper/             @OWNER/group-e-infra

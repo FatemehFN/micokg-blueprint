@@ -1,0 +1,44 @@
+# UC2-CQ01: Which AMR determinants detected in an environmental source (default:
+# waste water) are detected LATER in human faecal samples from the same place,
+# and in which host taxa on each side?
+#
+# Parameters: ?sourceMedium (default ENVO:00002001 waste water)
+#             ?humanSite    (default UBERON:0001988 feces)
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX mixs: <https://w3id.org/mixs/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT DISTINCT ?aro ?aroLabel ?place ?envDate ?envTaxon ?humanDate ?humanTaxon
+WHERE {
+  VALUES ?sourceMedium { obo:ENVO_00002001 }
+  VALUES ?humanSite { obo:UBERON_0001988 }
+
+  # detection in the environment
+  ?envSample mixs:0000014 ?envMedium ;
+             micokg:geo_location ?place ;
+             mixs:0000011 ?envDate .
+  ?envMedium rdfs:subClassOf* ?sourceMedium .
+  ?envObservation sosa:hasFeatureOfInterest ?envSample ;
+                  sio:SIO_000332 ?envGene .
+  ?envGene a micokg:AMRDeterminant ;
+           micokg:aro_class ?aro ;
+           obo:RO_0002162 ?envTaxon .
+
+  # later detection in human stool at the same place
+  ?humanSample micokg:host_body_site ?humanSite ;
+               micokg:host/obo:RO_0002162 obo:NCBITaxon_9606 ;
+               micokg:geo_location ?place ;
+               mixs:0000011 ?humanDate .
+  ?humanObservation sosa:hasFeatureOfInterest ?humanSample ;
+                    sio:SIO_000332 ?humanGene .
+  ?humanGene a micokg:AMRDeterminant ;
+             micokg:aro_class ?aro ;
+             obo:RO_0002162 ?humanTaxon .
+
+  FILTER (?humanDate > ?envDate)
+  OPTIONAL { ?aro rdfs:label ?aroLabel }
+}
+ORDER BY ?aroLabel ?envDate ?humanDate

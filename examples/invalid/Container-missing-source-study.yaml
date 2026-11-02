@@ -1,0 +1,7 @@
+# INVALID: every association must cite the study it comes from (source_study).
+taxon_disease_associations:
+  - id: micokg:assoc/INV-2
+    subject: NCBITaxon:851
+    predicate: RO:0002610
+    object: MONDO:0005575
+    direction: increased

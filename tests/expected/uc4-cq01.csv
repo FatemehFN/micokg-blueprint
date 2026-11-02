@@ -1,0 +1,3 @@
+food,foodLabel,taxon,taxonLabel,metabolite
+CHEBI:15443,inulin,NCBITaxon:853,Faecalibacterium prausnitzii,CHEBI:17968
+FOODON:03510048,high fiber food,NCBITaxon:166486,Roseburia intestinalis,CHEBI:17968

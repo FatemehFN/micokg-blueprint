@@ -1,0 +1,42 @@
+name: Schema change
+description: Propose a new or changed class, slot, enum or modelling convention
+title: "[Schema] "
+labels: ["schema"]
+body:
+  - type: input
+    id: motivating_cq
+    attributes:
+      label: Motivating competency question
+      description: Link the CQ issue or give its ID (e.g. uc3-cq02). Changes without a CQ are usually deferred.
+    validations:
+      required: true
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Type of change
+      options:
+        - New class
+        - New slot
+        - Change existing class/slot
+        - Remove / deprecate
+        - Convention / ADR
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the change. A LinkML YAML snippet is ideal.
+      render: yaml
+    validations:
+      required: true
+  - type: textarea
+    id: terms
+    attributes:
+      label: Ontology terms and standard properties to reuse
+      description: e.g. slot_uri from MIxS/SOSA/RO, ontology branch for values.
+  - type: textarea
+    id: example
+    attributes:
+      label: Example data
+      render: yaml

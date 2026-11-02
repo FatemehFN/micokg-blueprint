@@ -1,0 +1,6 @@
+taxon,taxonLabel,direction,nStudies,sites,evidenceTypes
+NCBITaxon:562,Escherichia coli,increased,1,UBERON:0001155,ECO:0000033
+NCBITaxon:817,Bacteroides fragilis,decreased,1,UBERON:0001155,ECO:0000269
+NCBITaxon:817,Bacteroides fragilis,increased,1,UBERON:0001988,ECO:0000269
+NCBITaxon:851,Fusobacterium nucleatum,increased,2,UBERON:0001155|UBERON:0001988,ECO:0000269
+NCBITaxon:853,Faecalibacterium prausnitzii,decreased,1,UBERON:0001988,ECO:0000269

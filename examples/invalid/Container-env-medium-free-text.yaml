@@ -1,0 +1,4 @@
+# INVALID: env_medium must be an ENVO (or UBERON) term, not free text.
+samples:
+  - id: micokg:sample/INV-3
+    env_medium: stool

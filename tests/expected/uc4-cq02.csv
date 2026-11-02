@@ -1,0 +1,3 @@
+food,taxon,metabolite,outcome,outcomeDirection
+CHEBI:15443,NCBITaxon:853,CHEBI:17968,MONDO:0005575,decreased
+FOODON:03510048,NCBITaxon:166486,CHEBI:17968,MONDO:0005575,decreased

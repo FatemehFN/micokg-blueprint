@@ -1,0 +1,24 @@
+# UC2-CQ03: Which drug classes are affected by resistance determinants detected in
+# all three One Health compartments (human, animal, environment)?
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT ?drugClass ?drugClassLabel (COUNT(DISTINCT ?compartment) AS ?nCompartments)
+       (GROUP_CONCAT(DISTINCT STR(?aro); separator="|") AS ?determinants)
+WHERE {
+  ?sample micokg:compartment ?compartment .
+  ?observation sosa:hasFeatureOfInterest ?sample ;
+               sio:SIO_000332 ?gene ;
+               sosa:hasSimpleResult ?value .
+  FILTER (?value > 0)
+  ?gene a micokg:AMRDeterminant ;
+        micokg:aro_class ?aro ;
+        micokg:confers_resistance_to ?drugClass .
+
+  OPTIONAL { ?drugClass rdfs:label ?drugClassLabel }
+}
+GROUP BY ?drugClass ?drugClassLabel
+HAVING (COUNT(DISTINCT ?compartment) = 3)
+ORDER BY ?drugClassLabel

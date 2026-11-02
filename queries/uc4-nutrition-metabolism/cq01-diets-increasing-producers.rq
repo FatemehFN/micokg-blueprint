@@ -1,0 +1,27 @@
+# UC4-CQ01: Which diets or food components increase the abundance of taxa that
+# produce a metabolite of interest (default: butyrate)?
+#
+# Parameter: ?metabolite (default CHEBI:17968 butyrate, CHEBI:30772 butyric acid)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT DISTINCT ?food ?foodLabel ?taxon ?taxonLabel ?metabolite
+WHERE {
+  VALUES ?metabolite { obo:CHEBI_17968 obo:CHEBI_30772 }
+
+  ?dietTaxon a micokg:DietTaxonAssociation ;
+             rdf:subject ?food ;
+             rdf:object ?taxon ;
+             micokg:direction "increased" .
+
+  ?taxonMetabolite a micokg:TaxonMetaboliteAssociation ;
+                   rdf:subject ?taxon ;
+                   rdf:predicate obo:RO_0002234 ;   # has output (produces)
+                   rdf:object ?metabolite .
+
+  OPTIONAL { ?food rdfs:label ?foodLabel }
+  OPTIONAL { ?taxon rdfs:label ?taxonLabel }
+}
+ORDER BY ?foodLabel ?taxonLabel

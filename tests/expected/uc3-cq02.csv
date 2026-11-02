@@ -1,0 +1,5 @@
+taxon,taxonLabel,nStudies,directions,status
+NCBITaxon:562,Escherichia coli,1,increased,single study
+NCBITaxon:817,Bacteroides fragilis,2,decreased|increased,conflicting
+NCBITaxon:851,Fusobacterium nucleatum,2,increased,consistent
+NCBITaxon:853,Faecalibacterium prausnitzii,1,decreased,single study

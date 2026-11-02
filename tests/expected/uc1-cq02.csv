@@ -1,0 +1,4 @@
+taxon,taxonLabel,stressProcess,stressProcessLabel,nAirSamples
+NCBITaxon:1270,Micrococcus luteus,GO:0009269,response to desiccation,1
+NCBITaxon:1270,Micrococcus luteus,GO:0034644,cellular response to UV,2
+NCBITaxon:1423,Bacillus subtilis,GO:0030435,sporulation resulting in formation of a cellular spore,1

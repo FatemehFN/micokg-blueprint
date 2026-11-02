@@ -1,0 +1,31 @@
+use_case: uc4-nutrition-metabolism
+title: Metabolic impact of nutrition
+description: >-
+  Diet -> microbiome -> metabolite -> host outcome chains. Toy data:
+  examples/valid/Container-uc4-nutrition.yaml.
+target: https://w3id.org/micokg/sparql   # placeholder until an endpoint exists
+competency_questions:
+  - id: uc4-cq01
+    question: >-
+      Which diets or food components increase the abundance of taxa that
+      produce butyrate?
+    query: cq01-diets-increasing-producers.rq
+    expected: uc4-cq01.csv
+    keywords: [diet, fibre, butyrate, short-chain fatty acid]
+    status: tested
+  - id: uc4-cq02
+    question: >-
+      Following food -> taxon -> metabolite -> host outcome, which outcomes are
+      reached and in which direction?
+    query: cq02-diet-taxon-metabolite-outcome.rq
+    expected: uc4-cq02.csv
+    keywords: [diet, metabolite, disease, chain query]
+    status: tested
+  - id: uc4-cq03
+    question: >-
+      Which metabolites change after a dietary exposure but have no producing
+      taxon recorded in the KG (gap analysis)?
+    query: cq03-metabolites-without-known-producer.rq
+    expected: uc4-cq03.csv
+    keywords: [diet, metabolite, gap analysis]
+    status: tested

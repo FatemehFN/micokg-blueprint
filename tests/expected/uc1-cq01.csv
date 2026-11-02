@@ -1,0 +1,5 @@
+process,processLabel,localScale,localScaleLabel,nSamples
+GO:0009269,response to desiccation,ENVO:00000073,building,1
+GO:0030435,sporulation resulting in formation of a cellular spore,ENVO:01000313,anthropogenic environment,1
+GO:0034644,cellular response to UV,ENVO:00000073,building,1
+GO:0034644,cellular response to UV,ENVO:01000313,anthropogenic environment,1

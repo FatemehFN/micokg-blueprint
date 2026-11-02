@@ -1,0 +1,31 @@
+use_case: uc2-amr-transmission
+title: Antimicrobial resistance transmission
+description: >-
+  Tracing resistance determinants across environment, animals and humans
+  (One Health). Toy data: examples/valid/Container-uc2-amr.yaml.
+target: https://w3id.org/micokg/sparql   # placeholder until an endpoint exists
+competency_questions:
+  - id: uc2-cq01
+    question: >-
+      Which AMR determinants detected in waste water are detected later in
+      human faecal samples from the same place, and in which host taxa?
+    query: cq01-environment-to-human.rq
+    expected: uc2-cq01.csv
+    keywords: [AMR, ARO, waste water, transmission, time]
+    status: tested
+  - id: uc2-cq02
+    question: >-
+      Which AMR determinants are on mobile genetic elements and carried by more
+      than one host taxon (horizontal gene transfer candidates)?
+    query: cq02-mobile-multi-taxon.rq
+    expected: uc2-cq02.csv
+    keywords: [AMR, plasmid, mobile genetic element, HGT]
+    status: tested
+  - id: uc2-cq03
+    question: >-
+      Which drug classes are affected by determinants detected in all three One
+      Health compartments (human, animal, environment)?
+    query: cq03-drug-classes-across-compartments.rq
+    expected: uc2-cq03.csv
+    keywords: [AMR, One Health, drug class]
+    status: tested

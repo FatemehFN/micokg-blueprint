@@ -1,0 +1,143 @@
+id: https://w3id.org/micokg/samples_observations
+name: micokg_samples_observations
+description: >-
+  Samples (with MIxS environmental context) and SOSA observations. An
+  Observation is a raw per-sample measurement (e.g. relative abundance of a
+  taxon, presence of a gene). Claims generalised across samples or taken from
+  the literature are Associations instead.
+default_prefix: micokg
+default_range: string
+imports:
+  - linkml:types
+  - core
+  - enums
+  - entities
+  - provenance
+
+classes:
+  Sample:
+    is_a: NamedThing
+    class_uri: sosa:Sample
+    exact_mappings: [OBI:0000747]
+    slots:
+      - part_of_study
+      - accession
+      - compartment
+      - env_broad_scale
+      - env_local_scale
+      - env_medium
+      - host
+      - host_body_site
+      - collection_date
+      - geo_loc_name
+      - geo_location
+      - latitude
+      - longitude
+    slot_usage:
+      env_medium:
+        required: true
+
+  Observation:
+    is_a: NamedThing
+    class_uri: sosa:Observation
+    slots:
+      - has_feature_of_interest
+      - observed_property
+      - is_about
+      - simple_result
+      - unit
+      - used_procedure
+      - result_time
+    slot_usage:
+      has_feature_of_interest:
+        required: true
+      observed_property:
+        required: true
+      is_about:
+        required: true
+
+slots:
+  part_of_study:
+    slot_uri: dct:isPartOf
+    range: Study
+  accession:
+    slot_uri: dct:identifier
+    description: INSDC/ENA/MGnify accession.
+  compartment:
+    slot_uri: micokg:compartment
+    range: CompartmentEnum
+  env_broad_scale:
+    slot_uri: mixs:0000012
+    range: uriorcurie
+    pattern: "^ENVO:\\d{8}$"
+    bindings:
+      - range: BiomeEnum
+        obligation_level: RECOMMENDED
+  env_local_scale:
+    slot_uri: mixs:0000013
+    range: uriorcurie
+    pattern: "^ENVO:\\d{8}$"
+    bindings:
+      - range: EnvironmentalSystemEnum
+        obligation_level: RECOMMENDED
+  env_medium:
+    slot_uri: mixs:0000014
+    range: uriorcurie
+    pattern: "^(ENVO:\\d{8}|UBERON:\\d{7})$"
+    bindings:
+      - range: EnvironmentalMaterialEnum
+        obligation_level: RECOMMENDED
+  host:
+    slot_uri: micokg:host
+    range: Host
+  host_body_site:
+    slot_uri: micokg:host_body_site
+    range: uriorcurie
+    pattern: "^UBERON:\\d{7}$"
+    bindings:
+      - range: AnatomyEnum
+        obligation_level: RECOMMENDED
+  collection_date:
+    slot_uri: mixs:0000011
+    range: date
+  geo_loc_name:
+    slot_uri: mixs:0000010
+    description: Free-text location as in MIxS, e.g. "Spain:Barcelona".
+  geo_location:
+    slot_uri: micokg:geo_location
+    range: uriorcurie
+    description: Resolvable place identifier (GAZ, GeoNames) used for joins across samples.
+  latitude:
+    slot_uri: geo:lat
+    range: float
+    minimum_value: -90
+    maximum_value: 90
+  longitude:
+    slot_uri: geo:long
+    range: float
+    minimum_value: -180
+    maximum_value: 180
+  has_feature_of_interest:
+    slot_uri: sosa:hasFeatureOfInterest
+    range: Sample
+  observed_property:
+    slot_uri: sosa:observedProperty
+    range: uriorcurie
+    description: e.g. micokg:property/relative_abundance, micokg:property/gene_presence.
+  is_about:
+    slot_uri: sio:SIO_000332
+    range: uriorcurie
+    description: What was measured - a taxon, a gene record (micokg:gene/...) or a metabolite.
+  simple_result:
+    slot_uri: sosa:hasSimpleResult
+    range: float
+  unit:
+    slot_uri: qudt:unit
+    range: uriorcurie
+  used_procedure:
+    slot_uri: sosa:usedProcedure
+    range: uriorcurie
+    description: Assay (OBI) or tool/workflow (bio.tools, WorkflowHub) identifier.
+  result_time:
+    slot_uri: sosa:resultTime
+    range: date

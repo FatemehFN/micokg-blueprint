@@ -1,0 +1,32 @@
+use_case: uc3-host-microbiome-cancer
+title: Host-microbiome interactions in cancer
+description: >-
+  Reference use case: fully worked, copy its pattern for the other use cases.
+  Toy data: examples/valid/Container-uc3-cancer.yaml.
+target: https://w3id.org/micokg/sparql   # placeholder until an endpoint exists
+competency_questions:
+  - id: uc3-cq01
+    question: >-
+      Which taxa are reported as associated with colorectal cancer (including
+      subtypes and equivalent DOID/NCIT identifiers), with direction, body
+      sites, evidence types and number of studies?
+    query: cq01-taxa-associated-with-disease.rq
+    expected: uc3-cq01.csv
+    keywords: [colorectal cancer, differential abundance, SSSOM, subclass]
+    status: tested
+  - id: uc3-cq02
+    question: >-
+      For taxa associated with colorectal cancer, are reported directions
+      consistent across studies, conflicting, or from a single study?
+    query: cq02-consistent-or-conflicting.rq
+    expected: uc3-cq02.csv
+    keywords: [colorectal cancer, conflicting evidence, reification]
+    status: tested
+  - id: uc3-cq03
+    question: >-
+      Which metabolites with a genotoxic or carcinogenic role are produced by
+      taxa associated with colorectal cancer?
+    query: cq03-genotoxic-metabolites.rq
+    expected: uc3-cq03.csv
+    keywords: [colorectal cancer, metabolite, ChEBI role, colibactin]
+    status: tested

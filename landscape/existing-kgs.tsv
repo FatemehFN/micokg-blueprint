@@ -1,0 +1,14 @@
+name	url	scope	data_model	format	ontologies_used	licence	access	reuse_notes	verified
+KG-Microbe	https://www.biorxiv.org/content/10.1101/2025.02.24.639989v1	Microbial traits, function and biomedical links; modular KGs with competency-question evaluation	Biolink	TODO	TODO	TODO	TODO	Association pattern and Biolink alignment close to ours; crosswalk target	no
+MicrobiomeKG	https://www.frontiersin.org/journals/systems-biology/articles/10.3389/fsysb.2025.1544432/full	Assertions mined from supplementary tables of microbiome papers	Biolink / TRAPI	TODO	TODO	TODO	TODO	Literature-derived associations; check evidence/provenance fields	no
+MiKG	https://www.atlantis-press.com/journals/jaims/125948765/view	Gut-brain axis microbiome KG	TODO	Turtle (GraphDB)	TODO	TODO	SPARQL (GraphDB)	RDF-native; compare predicates	no
+MDKG	https://github.com/ccszbd/MDKG	Microbe-disease knowledge graph	TODO	TODO	TODO	TODO	GitHub	TODO	no
+MINERVA	https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12780759/	Microbe-disease KG	TODO	TODO	TODO	TODO	TODO	Published statistical critiques: useful caution on evidence modelling	no
+gutMDisorder	https://academic.oup.com/nar/article/51/D1/D717/6754909	Curated gut microbe-disorder (and intervention) associations	TODO (non-RDF)	TODO	TODO	TODO	TODO	Candidate real-data slice for UC3/UC4 on Day 4	no
+Disbiome	TODO	Curated microbe-disease associations	TODO (non-RDF)	TODO	TODO	TODO	TODO	Disease terms reportedly MedDRA: needs mapping to MONDO/NCIT	no
+HMDAD	TODO	Human microbe-disease associations	TODO	TODO	TODO	TODO	TODO	TODO	no
+GMMAD	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	no
+CARD	https://card.mcmaster.ca/	Antimicrobial resistance genes, drug classes, mechanisms	Antibiotic Resistance Ontology (ARO)	OBO/OWL + TSV	ARO	TODO	Download	ARO used for AMR determinants (UC2)	no
+MGnify	https://www.ebi.ac.uk/metagenomics/	ELIXIR Core Data Resource for microbiome analyses (samples, taxonomic and functional profiles, MAGs)	TODO	API (JSON)	TODO	TODO	REST API	Real samples with MIxS/ENVO metadata for UC1/UC2; link with Project 12 SampleSift	no
+VMH / AGORA	https://www.vmh.life/	Human and gut-microbial metabolic reconstructions	TODO	TODO	TODO	TODO	TODO	Taxon-metabolite production/consumption for UC4	no
+Biolink Model	https://github.com/biolink/biolink-model	Upper data model for biomedical KGs (LinkML)	LinkML	YAML/OWL	many	TODO	GitHub	Crosswalk target: mappings/schema/micokg-biolink.sssom.tsv (to do)	no

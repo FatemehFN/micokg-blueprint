@@ -1,0 +1,18 @@
+# Materialise direct "shortcut" edges from reified associations (ADR-0001).
+# The association node stays the source of truth; shortcuts are loaded into the
+# named graph <https://w3id.org/micokg/graph/shortcuts> for simple queries and
+# for tools that expect plain subject-predicate-object edges (e.g. graph ML).
+# Negated associations and those with confidence below 0.5 are left out.
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+CONSTRUCT { ?s ?p ?o }
+WHERE {
+  ?association rdf:subject ?s ;
+               rdf:predicate ?p ;
+               rdf:object ?o .
+  FILTER NOT EXISTS { ?association micokg:negated true }
+  OPTIONAL { ?association micokg:confidence ?confidence }
+  FILTER (!BOUND(?confidence) || ?confidence >= 0.5)
+}

@@ -1,0 +1,82 @@
+id: https://w3id.org/micokg/enums
+name: micokg_enums
+description: >-
+  Two kinds of enum. Static enums are small internal code lists and appear in
+  RDF as literals. Dynamic enums describe which ontology branch an
+  ontology-valued slot may draw from; they are checked by the nightly
+  linkml-term-validator job (they need ontology downloads) and documented on
+  each slot via `bindings`. Ontology-valued slots themselves have range
+  uriorcurie so they are serialised as IRIs, not literals (ADR-0002).
+default_prefix: micokg
+imports:
+  - linkml:types
+
+enums:
+  DirectionEnum:
+    description: Direction of an association relative to a comparison (e.g. cases vs controls).
+    permissible_values:
+      increased:
+      decreased:
+      present:
+      absent:
+      no_change:
+
+  CompartmentEnum:
+    description: One Health compartment of a sample.
+    permissible_values:
+      human:
+      animal:
+      environment:
+      food:
+
+  # ---- dynamic enums (ontology branches) ----
+  BiomeEnum:
+    reachable_from:
+      source_ontology: obo:envo
+      source_nodes: [ENVO:00000428]   # biome
+      relationship_types: [rdfs:subClassOf]
+  EnvironmentalSystemEnum:
+    reachable_from:
+      source_ontology: obo:envo
+      source_nodes: [ENVO:01000254]   # environmental system
+      relationship_types: [rdfs:subClassOf]
+  EnvironmentalMaterialEnum:
+    reachable_from:
+      source_ontology: obo:envo
+      source_nodes: [ENVO:00010483]   # environmental material
+      relationship_types: [rdfs:subClassOf]
+  AnatomyEnum:
+    reachable_from:
+      source_ontology: obo:uberon
+      source_nodes: [UBERON:0001062]  # anatomical entity
+      relationship_types: [rdfs:subClassOf]
+  DiseaseEnum:
+    reachable_from:
+      source_ontology: obo:mondo
+      source_nodes: [MONDO:0000001]   # disease
+      relationship_types: [rdfs:subClassOf]
+  TaxonEnum:
+    reachable_from:
+      source_ontology: obo:ncbitaxon
+      source_nodes: [NCBITaxon:131567]  # cellular organisms
+      relationship_types: [rdfs:subClassOf]
+  MetaboliteEnum:
+    reachable_from:
+      source_ontology: obo:chebi
+      source_nodes: [CHEBI:25212]     # metabolite
+      relationship_types: [rdfs:subClassOf]
+  AMRDeterminantEnum:
+    reachable_from:
+      source_ontology: obo:aro
+      source_nodes: [ARO:3000000]     # determinant of antibiotic resistance
+      relationship_types: [rdfs:subClassOf]
+  EvidenceEnum:
+    reachable_from:
+      source_ontology: obo:eco
+      source_nodes: [ECO:0000000]     # evidence
+      relationship_types: [rdfs:subClassOf]
+  FoodEnum:
+    reachable_from:
+      source_ontology: obo:foodon
+      source_nodes: [FOODON:00002403] # food material
+      relationship_types: [rdfs:subClassOf]

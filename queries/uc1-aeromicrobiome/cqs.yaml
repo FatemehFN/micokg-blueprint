@@ -1,0 +1,31 @@
+use_case: uc1-aeromicrobiome
+title: Aeromicrobiome functional characterisation
+description: >-
+  Functions and taxa of airborne microbial communities across indoor and
+  outdoor settings. Toy data: examples/valid/Container-uc1-aeromicrobiome.yaml.
+target: https://w3id.org/micokg/sparql   # placeholder until an endpoint exists
+competency_questions:
+  - id: uc1-cq01
+    question: >-
+      Which biological processes (GO) are detected in air samples, and in how
+      many samples per local environmental setting?
+    query: cq01-functions-in-air-by-setting.rq
+    expected: uc1-cq01.csv
+    keywords: [air, GO, ENVO, functional profile]
+    status: tested
+  - id: uc1-cq02
+    question: >-
+      Which taxa detected in air carry genes for stress-survival processes
+      (sporulation, UV response, desiccation response)?
+    query: cq02-stress-survival-taxa.rq
+    expected: uc1-cq02.csv
+    keywords: [air, stress tolerance, GO, taxon]
+    status: tested
+  - id: uc1-cq03
+    question: >-
+      Which taxa detected in air samples are known to have humans as a host,
+      and in which samples and settings?
+    query: cq03-air-taxa-with-human-host.rq
+    expected: uc1-cq03.csv
+    keywords: [air, host, One Health, hospital]
+    status: tested

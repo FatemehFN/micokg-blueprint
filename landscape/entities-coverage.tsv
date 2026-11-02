@@ -1,0 +1,14 @@
+entity	micokg_class	preferred_ids	KG-Microbe	MicrobiomeKG	MiKG	MDKG	gutMDisorder	Disbiome	CARD	MGnify	VMH_AGORA	notes
+taxon	Taxon	NCBITaxon, GTDB	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+host	Host	micokg:host/*, NCBITaxon	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+sample	Sample	micokg:sample/*, ENA/MGnify accession	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+habitat / environment	(slots) env_*	ENVO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+functional gene	FunctionalGene	micokg:gene/*, GO, KEGG.ORTHOLOGY, EC	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+AMR determinant	AMRDeterminant	ARO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+metabolite	Metabolite	CHEBI, HMDB	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+disease	Disease	MONDO, DOID, NCIT, EFO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+food / diet	FoodItem	FOODON, CHEBI	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+observation	Observation	micokg:obs/*	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+association (with evidence)	Association subclasses	micokg:assoc/*, ECO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO
+imaging data	(future module)	-	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	Out of scope for v0.1
+clinical data	(future module)	-	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	TODO	Out of scope for v0.1

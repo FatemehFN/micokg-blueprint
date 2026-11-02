@@ -1,0 +1,9 @@
+# INVALID: association subject must be an NCBITaxon or GTDB CURIE, not a name.
+studies:
+  - id: micokg:study/INV-1
+taxon_disease_associations:
+  - id: micokg:assoc/INV-1
+    subject: Fusobacterium nucleatum
+    predicate: RO:0002610
+    object: MONDO:0005575
+    source_study: micokg:study/INV-1

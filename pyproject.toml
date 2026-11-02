@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "micoknowgraph"
+version = "0.1.0"
+description = "MiCoKnowGraph: a LinkML blueprint for a collaborative microbiome knowledge graph (BioHackathon Europe 2026, Project 16)"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "linkml>=1.8",
+  "pyoxigraph>=0.4",
+  "rdflib>=7",
+  "pyshacl>=0.26",
+  "sssom>=0.4",
+  "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+terms = ["oaklib>=0.6", "linkml-term-validator"]
+docs = ["mkdocs-material>=9"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: tests that need internet access (deselect with -m 'not network')"]
+addopts = "-m 'not network'"

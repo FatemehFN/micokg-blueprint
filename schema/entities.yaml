@@ -1,0 +1,156 @@
+id: https://w3id.org/micokg/entities
+name: micokg_entities
+description: >-
+  Biological and food entities. Records for these are optional in data files:
+  their identifiers are ontology IRIs, and labels/hierarchy come from the
+  ontologies. Add a record when the KG says something extra about the entity
+  (e.g. a gene's genomic context or a metabolite's roles).
+default_prefix: micokg
+default_range: string
+imports:
+  - linkml:types
+  - core
+  - enums
+
+classes:
+  Taxon:
+    is_a: NamedThing
+    class_uri: micokg:Taxon
+    exact_mappings: [biolink:OrganismTaxon, dwc:Taxon]
+    id_prefixes: [NCBITaxon, GTDB]
+    slots:
+      - taxon_rank
+
+  Host:
+    is_a: NamedThing
+    class_uri: micokg:Host
+    description: An individual host organism (or a de-identified participant) from which samples were taken.
+    close_mappings: [sio:SIO_010000, biolink:IndividualOrganism]
+    slots:
+      - in_taxon
+      - has_disease
+      - sex
+      - age_years
+    slot_usage:
+      in_taxon:
+        required: true
+
+  FunctionalGene:
+    is_a: NamedThing
+    class_uri: micokg:FunctionalGene
+    description: >-
+      A gene (or gene cluster) detected in a genome, MAG or metagenome, with its
+      function and genomic context. Minted micokg:gene/... identifiers.
+    close_mappings: [SO:0000704, biolink:Gene]
+    slots:
+      - gene_symbol
+      - gene_family
+      - has_function
+      - in_taxon
+      - genomic_context
+
+  AMRDeterminant:
+    is_a: FunctionalGene
+    class_uri: micokg:AMRDeterminant
+    close_mappings: [ARO:3000000]
+    slots:
+      - aro_class
+      - confers_resistance_to
+      - resistance_mechanism
+    slot_usage:
+      aro_class:
+        required: true
+
+  Metabolite:
+    is_a: NamedThing
+    class_uri: micokg:Metabolite
+    exact_mappings: [CHEBI:25212, biolink:SmallMolecule]
+    id_prefixes: [CHEBI, HMDB]
+    slots:
+      - has_role
+
+  Disease:
+    is_a: NamedThing
+    class_uri: micokg:Disease
+    exact_mappings: [MONDO:0000001, biolink:Disease]
+    id_prefixes: [MONDO, DOID, NCIT, EFO]
+
+  FoodItem:
+    is_a: NamedThing
+    class_uri: micokg:FoodItem
+    description: A food, diet component or dietary intervention.
+    exact_mappings: [FOODON:00002403, biolink:Food]
+    related_mappings: [ExO:0000002]
+    id_prefixes: [FOODON, CHEBI, NCIT, micokg]
+    slots:
+      - food_component
+
+slots:
+  taxon_rank:
+    slot_uri: micokg:taxon_rank
+    range: uriorcurie
+    pattern: "^TAXRANK:\\d{7}$"
+  in_taxon:
+    slot_uri: RO:0002162
+    range: uriorcurie
+    pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
+    bindings:
+      - range: TaxonEnum
+        obligation_level: RECOMMENDED
+  has_disease:
+    slot_uri: micokg:has_disease
+    range: uriorcurie
+    multivalued: true
+    pattern: "^(MONDO|DOID|NCIT|EFO):[A-Za-z0-9_]+$"
+  sex:
+    slot_uri: micokg:sex
+    range: uriorcurie
+    pattern: "^PATO:\\d{7}$"
+  age_years:
+    slot_uri: micokg:age_years
+    range: float
+    minimum_value: 0
+  gene_symbol:
+    slot_uri: micokg:gene_symbol
+  gene_family:
+    slot_uri: micokg:gene_family
+    range: uriorcurie
+    multivalued: true
+    description: KEGG orthology, EC number or Pfam family.
+  has_function:
+    slot_uri: RO:0000085
+    range: uriorcurie
+    multivalued: true
+    pattern: "^GO:\\d{7}$"
+  genomic_context:
+    slot_uri: micokg:genomic_context
+    range: uriorcurie
+    pattern: "^SO:\\d{7}$"
+    description: e.g. SO:0000155 plasmid, SO:0000340 chromosome.
+  aro_class:
+    slot_uri: micokg:aro_class
+    range: uriorcurie
+    pattern: "^ARO:\\d{7}$"
+    bindings:
+      - range: AMRDeterminantEnum
+        obligation_level: RECOMMENDED
+  confers_resistance_to:
+    slot_uri: micokg:confers_resistance_to
+    range: uriorcurie
+    multivalued: true
+    pattern: "^(ARO|CHEBI):\\d+$"
+    description: Drug or drug class (ARO drug class or CHEBI antimicrobial agent).
+  resistance_mechanism:
+    slot_uri: micokg:resistance_mechanism
+    range: uriorcurie
+    pattern: "^ARO:\\d{7}$"
+  has_role:
+    slot_uri: RO:0000087
+    range: uriorcurie
+    multivalued: true
+    pattern: "^CHEBI:\\d+$"
+  food_component:
+    slot_uri: micokg:food_component
+    range: uriorcurie
+    multivalued: true
+    pattern: "^CHEBI:\\d+$"

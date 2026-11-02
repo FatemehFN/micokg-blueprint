@@ -1,0 +1,97 @@
+# UC4 - Metabolic impact of nutrition.
+# TOY DATA: ontology identifiers are real; studies and findings are invented.
+#
+# Deliberate test situations:
+#  * inulin and high-fibre food increase butyrate-producing taxa        -> CQ01
+#  * food -> taxon -> butyrate -> colorectal cancer chain               -> CQ02
+#  * Bifidobacterium longum increases but has no metabolite record      -> chain stops (not in CQ01/CQ02)
+#  * inulin raises propionate, but no taxon in the KG produces it       -> CQ03 gap analysis
+
+studies:
+  - id: micokg:study/UC4-A
+    title: Toy inulin supplementation trial
+    license: https://creativecommons.org/licenses/by/4.0/
+    knowledge_source: infores:micokg-toy
+  - id: micokg:study/UC4-B
+    title: Toy literature-curated diet-microbiome-metabolite records
+    knowledge_source: infores:micokg-toy
+
+foods:
+  - id: CHEBI:15443
+    name: inulin
+  - id: FOODON:03510048
+    name: high fiber food
+    food_component: [CHEBI:15443]
+
+metabolites:
+  - id: CHEBI:17968
+    name: butyrate
+  - id: CHEBI:17272
+    name: propionate
+
+diet_taxon_associations:
+  - id: micokg:assoc/UC4-D01
+    subject: CHEBI:15443
+    predicate: RO:0002610
+    object: NCBITaxon:853              # Faecalibacterium prausnitzii
+    direction: increased
+    host_context: NCBITaxon:9606
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC4-A
+  - id: micokg:assoc/UC4-D02
+    subject: CHEBI:15443
+    predicate: RO:0002610
+    object: NCBITaxon:216816           # Bifidobacterium longum
+    direction: increased
+    host_context: NCBITaxon:9606
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC4-A
+  - id: micokg:assoc/UC4-D03
+    subject: FOODON:03510048
+    predicate: RO:0002610
+    object: NCBITaxon:166486           # Roseburia intestinalis
+    direction: increased
+    has_evidence: [ECO:0000033]
+    source_study: micokg:study/UC4-B
+
+taxon_metabolite_associations:
+  - id: micokg:assoc/UC4-M01
+    subject: NCBITaxon:853
+    predicate: RO:0002234              # produces
+    object: CHEBI:17968                # butyrate
+    has_evidence: [ECO:0000033]
+    source_study: micokg:study/UC4-B
+  - id: micokg:assoc/UC4-M02
+    subject: NCBITaxon:166486
+    predicate: RO:0002234
+    object: CHEBI:17968
+    has_evidence: [ECO:0000033]
+    source_study: micokg:study/UC4-B
+
+diet_metabolite_associations:
+  - id: micokg:assoc/UC4-DM01
+    subject: CHEBI:15443
+    predicate: RO:0002610
+    object: CHEBI:17968
+    direction: increased
+    anatomical_context: UBERON:0001988
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC4-A
+  - id: micokg:assoc/UC4-DM02
+    subject: CHEBI:15443
+    predicate: RO:0002610
+    object: CHEBI:17272                # propionate
+    direction: increased
+    anatomical_context: UBERON:0001988
+    has_evidence: [ECO:0000269]
+    source_study: micokg:study/UC4-A
+
+metabolite_disease_associations:
+  - id: micokg:assoc/UC4-MD01
+    subject: CHEBI:17968
+    predicate: RO:0002610
+    object: MONDO:0005575              # colorectal cancer
+    direction: decreased               # lower faecal butyrate in cases
+    anatomical_context: UBERON:0001988
+    has_evidence: [ECO:0000033]
+    source_study: micokg:study/UC4-B

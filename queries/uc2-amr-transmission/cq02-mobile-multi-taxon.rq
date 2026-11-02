@@ -1,0 +1,31 @@
+# UC2-CQ02: Which AMR determinants sit on mobile genetic elements (plasmids,
+# transposons, integrons...) and are carried by more than one host taxon -
+# candidates for horizontal gene transfer?
+#
+# Note: in the Sequence Ontology, plasmid (SO:0000155) is_a replicon, NOT a
+# subclass of mobile_genetic_element (SO:0001037). Both roots are listed so that
+# plasmids and MGE subclasses both count. (Open modelling question for Day 1:
+# should "mobile context" be a small curated list/enum instead?)
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT ?aro ?aroLabel (COUNT(DISTINCT ?taxon) AS ?nTaxa)
+       (GROUP_CONCAT(DISTINCT STR(?taxon); separator="|") AS ?taxa)
+WHERE {
+  VALUES ?mobileRoot {
+    obo:SO_0000155   # plasmid
+    obo:SO_0001037   # mobile_genetic_element
+  }
+
+  ?gene a micokg:AMRDeterminant ;
+        micokg:aro_class ?aro ;
+        micokg:genomic_context ?context ;
+        obo:RO_0002162 ?taxon .
+  ?context rdfs:subClassOf* ?mobileRoot .
+
+  OPTIONAL { ?aro rdfs:label ?aroLabel }
+}
+GROUP BY ?aro ?aroLabel
+HAVING (COUNT(DISTINCT ?taxon) > 1)
+ORDER BY ?aroLabel

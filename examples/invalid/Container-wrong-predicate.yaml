@@ -1,0 +1,10 @@
+# INVALID: RO:0002234 (has output / produces) is not an allowed predicate for a
+# taxon-disease association; use RO:0002610 or RO:0003302.
+studies:
+  - id: micokg:study/INV-4
+taxon_disease_associations:
+  - id: micokg:assoc/INV-4
+    subject: NCBITaxon:851
+    predicate: RO:0002234
+    object: MONDO:0005575
+    source_study: micokg:study/INV-4

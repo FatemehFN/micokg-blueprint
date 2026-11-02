@@ -1,0 +1,37 @@
+# UC3-CQ03: Which metabolites with a genotoxic or carcinogenic role (ChEBI roles)
+# are produced by taxa associated with colorectal cancer?
+#
+# Chains two association types: taxon -> disease and taxon -> metabolite (produces),
+# then follows the metabolite's ChEBI role up the role hierarchy.
+#
+# Parameters: ?queryDisease (default MONDO:0005575 colorectal cancer)
+#             ?roleOfInterest (default CHEBI:50902 genotoxin, CHEBI:50903 carcinogenic agent)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX micokg: <https://w3id.org/micokg/>
+
+SELECT DISTINCT ?taxon ?taxonLabel ?metabolite ?metaboliteLabel ?role
+WHERE {
+  VALUES ?queryDisease { obo:MONDO_0005575 }
+  VALUES ?roleOfInterest { obo:CHEBI_50902 obo:CHEBI_50903 }
+
+  ?taxonDisease a micokg:TaxonDiseaseAssociation ;
+                rdf:subject ?taxon ;
+                rdf:object ?disease .
+  ?disease (skos:exactMatch|^skos:exactMatch)?/rdfs:subClassOf* ?queryDisease .
+  FILTER NOT EXISTS { ?taxonDisease micokg:negated true }
+
+  ?taxonMetabolite a micokg:TaxonMetaboliteAssociation ;
+                   rdf:subject ?taxon ;
+                   rdf:predicate obo:RO_0002234 ;   # has output (produces)
+                   rdf:object ?metabolite .
+
+  ?metabolite obo:RO_0000087 ?role .                # has role
+  ?role rdfs:subClassOf* ?roleOfInterest .
+
+  OPTIONAL { ?taxon rdfs:label ?taxonLabel }
+  OPTIONAL { ?metabolite rdfs:label ?metaboliteLabel }
+}
+ORDER BY ?taxonLabel ?metaboliteLabel ?role

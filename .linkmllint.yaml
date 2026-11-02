@@ -1,0 +1,6 @@
+extends: recommended
+rules:
+  # We deliberately use OBO PURLs and orcid.org/doi.org IRIs rather than
+  # identifiers.org namespaces, to match the ontologies' own IRIs in RDF.
+  canonical_prefixes:
+    level: disabled
