@@ -2,7 +2,7 @@
 
 A draft data model for a microbiome knowledge graph, written for [BioHackathon Europe 2026, Project 16 (MiCoKnowGraph)](https://github.com/elixir-europe/biohackathon-projects-2026/blob/main/16.md).
 
-I put this together before the event as something concrete to discuss. It is a starting point, not a proposal. I drafted it with help from Claude (an AI assistant) and reviewed it myself. The toy data is invented; every ontology identifier is real.
+I put this together before the event as something concrete to discuss. It is a starting point, not a proposal. I drafted it with help from Claude and reviewed it myself. The toy data is invented; every ontology identifier is real.
 
 Docs: <https://fatemehfn.github.io/micokg-blueprint/>
 
