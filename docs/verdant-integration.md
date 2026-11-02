@@ -1,6 +1,6 @@
 # VERDANT integration (Project 11)
 
-[VERDANT](https://github.com/elixir-europe/biohackathon-projects-2026/blob/main/11.md) builds AI-generated SKOS mappings (exactMatch, closeMatch, relatedMatch) from vocabulary terms to ontologies and knowledge bases, with an expert pre-check loop and a federated SPARQL endpoint. It will enrich a subset of the ELIXIR Microbiome Community KG.
+[VERDANT](https://github.com/elixir-europe/biohackathon-projects-2026/blob/main/11.md) builds AI-generated SKOS mappings (exactMatch, closeMatch, relatedMatch) from vocabulary terms to ontologies and knowledge bases, with an expert pre-check loop and a federated SPARQL endpoint.
 
 This page sketches how data could flow between the two projects. Nothing here has been agreed with the VERDANT team.
 
@@ -19,7 +19,7 @@ flowchart LR
 
 ## 1. MiCoKnowGraph → VERDANT
 
-`build/verdant-input/unmapped-terms.tsv` (tab-separated):
+Proposed format for the terms we would send (no script produces this yet):
 
 | column | example |
 |---|---|
@@ -30,8 +30,10 @@ flowchart LR
 | `suggested_target_ontology` | `ENVO` |
 
 Sources:
-- free-text habitat, sample-type, host and disease labels from the landscape KGs;
+- free-text habitat, sample-type, host and disease labels from existing microbiome KGs;
 - labels found when real data is loaded.
+
+The three directories under `mappings/` are `curated/` (reviewed, loaded into the KG), `verdant/candidates/` (unreviewed VERDANT output) and `verdant/rejected/`.
 
 ## 2. VERDANT → MiCoKnowGraph
 
@@ -56,9 +58,9 @@ Reviewers go through candidates in a pull request:
 
 | Decision | Action |
 |---|---|
-| Accept | Move the row to `mappings/curated/<topic>.sssom.tsv`, add `reviewer_id` (ORCID), keep the original confidence |
+| Accept | Move the row to `mappings/curated/<topic>.sssom.tsv`, put your ORCID in `reviewer_id`, keep the original confidence |
 | Accept with a different predicate | As accept, change `predicate_id` (e.g. exact → close), and explain in `comment` |
-| Reject | Move the row to `mappings/verdant/rejected/`, set `predicate_modifier: Not`, and give the reason in `comment` |
+| Reject | Move the row to `mappings/verdant/rejected/`, add a `predicate_modifier` column set to `Not`, and give the reason in `comment` |
 
 Rejected rows are published so VERDANT can use them as negative training examples.
 

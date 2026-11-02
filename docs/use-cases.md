@@ -23,7 +23,7 @@ UC3 is the most complete one; copy its structure.
 
 | ID | Question | Tests the model on… |
 |---|---|---|
-| uc2-cq01 | Which determinants found in waste water appear later in human stool from the same place? | place and time joins, host taxon via `host/in_taxon` |
+| uc2-cq01 | Which determinants found in waste water appear later in human stool from the same place? | place and time joins, host taxon via `has_host/in_taxon` |
 | uc2-cq02 | Which determinants on mobile elements are carried by more than one taxon? | SO genomic context, aggregation |
 | uc2-cq03 | Which drug classes are affected by determinants in all three One Health compartments? | compartment enum, ARO drug classes |
 

@@ -22,7 +22,7 @@ These are the conventions used in `schema/` and `examples/`. The reasons behind 
 | Publication | `doi:` or `PMID:` | `doi:10.1234/abcd` |
 | Source resource | infores CURIE | `infores:gutmdisorder` |
 
-Type segments currently in use: `study`, `sample`, `host`, `obs`, `assoc`, `gene`, `food`, `property`, `term`.
+Type segments currently in use: `study`, `sample`, `host`, `obs`, `assoc`, `gene`, `property`.
 
 ## Slots with ontology values
 
@@ -74,7 +74,6 @@ Example: *taxon produces a quorum-sensing molecule that affects host inflammatio
 4. Add a list slot to `Container` in `schema/micokg.yaml` (`taxon_phenotype_associations`), and any new prefixes.
 5. Add toy data to `examples/valid/`, plus an `examples/invalid/` file showing a common mistake.
 6. Add the `.rq` query and the `cqs.yaml` entry, then run `make slims` (for the new terms) and `make test`.
-7. Add a row to `mappings/schema/micokg-biolink.sssom.tsv` if Biolink has an equivalent.
 
 ## Observations
 

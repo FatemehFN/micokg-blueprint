@@ -9,7 +9,7 @@ CURATED := $(wildcard mappings/curated/*.sssom.tsv)
 
 .PHONY: all lint validate gen rdf shacl mappings slims spex test terms docs-serve clean
 
-all: lint validate gen rdf shacl mappings spex test
+all: lint gen rdf mappings spex test
 
 lint:
 	$(RUN) linkml-lint --config .linkmllint.yaml $(SCHEMA)
@@ -57,6 +57,7 @@ spex:
 test:
 	$(RUN) pytest -q
 
+# Needs `pip install -e .[terms]` and downloads whole ontologies (NCBITaxon is several GB).
 terms:
 	@for f in $(VALID); do $(RUN) linkml-term-validator validate-data $$f -s $(SCHEMA) -t Container || exit 1; done
 

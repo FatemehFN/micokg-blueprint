@@ -15,6 +15,7 @@ imports:
 classes:
   Taxon:
     is_a: NamedThing
+    description: An organism or taxonomic group, identified by an NCBI Taxonomy or GTDB identifier.
     class_uri: micokg:Taxon
     exact_mappings: [biolink:OrganismTaxon, dwc:Taxon]
     id_prefixes: [NCBITaxon, GTDB]
@@ -51,6 +52,7 @@ classes:
 
   AMRDeterminant:
     is_a: FunctionalGene
+    description: A gene or mutation that confers antimicrobial resistance, classified with the Antibiotic Resistance Ontology (ARO).
     class_uri: micokg:AMRDeterminant
     close_mappings: [ARO:3000000]
     slots:
@@ -63,6 +65,7 @@ classes:
 
   Metabolite:
     is_a: NamedThing
+    description: A small molecule, identified by a ChEBI or HMDB identifier.
     class_uri: micokg:Metabolite
     exact_mappings: [CHEBI:25212, biolink:SmallMolecule]
     id_prefixes: [CHEBI, HMDB]
@@ -71,6 +74,7 @@ classes:
 
   Disease:
     is_a: NamedThing
+    description: A disease or condition, identified by a MONDO, DOID, NCIT or EFO term.
     class_uri: micokg:Disease
     exact_mappings: [MONDO:0000001, biolink:Disease]
     id_prefixes: [MONDO, DOID, NCIT, EFO]
@@ -88,10 +92,12 @@ classes:
 slots:
   taxon_rank:
     slot_uri: micokg:taxon_rank
+    description: Taxonomic rank (TAXRANK term), e.g. TAXRANK:0000006 species.
     range: uriorcurie
     pattern: "^TAXRANK:\\d{7}$"
   in_taxon:
     slot_uri: RO:0002162
+    description: The taxon this host or gene belongs to.
     range: uriorcurie
     pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
     bindings:
@@ -99,19 +105,23 @@ slots:
         obligation_level: RECOMMENDED
   has_disease:
     slot_uri: micokg:has_disease
+    description: Diseases diagnosed in the host.
     range: uriorcurie
     multivalued: true
     pattern: "^(MONDO|DOID|NCIT|EFO):[A-Za-z0-9_]+$"
   sex:
     slot_uri: micokg:sex
+    description: Biological sex as a PATO term.
     range: uriorcurie
     pattern: "^PATO:\\d{7}$"
   age_years:
     slot_uri: micokg:age_years
+    description: Age of the host in years at sampling.
     range: float
     minimum_value: 0
   gene_symbol:
     slot_uri: micokg:gene_symbol
+    description: Gene symbol or name as given by the source, e.g. blaCTX-M-15.
   gene_family:
     slot_uri: micokg:gene_family
     range: uriorcurie
@@ -119,6 +129,7 @@ slots:
     description: KEGG orthology, EC number or Pfam family.
   has_function:
     slot_uri: RO:0000085
+    description: Gene Ontology terms for the gene's molecular function or biological process.
     range: uriorcurie
     multivalued: true
     pattern: "^GO:\\d{7}$"
@@ -129,6 +140,7 @@ slots:
     description: e.g. SO:0000155 plasmid, SO:0000340 chromosome.
   aro_class:
     slot_uri: micokg:aro_class
+    description: The ARO gene family or determinant class.
     range: uriorcurie
     pattern: "^ARO:\\d{7}$"
     bindings:
@@ -142,15 +154,18 @@ slots:
     description: Drug or drug class (ARO drug class or CHEBI antimicrobial agent).
   resistance_mechanism:
     slot_uri: micokg:resistance_mechanism
+    description: ARO resistance mechanism, e.g. antibiotic inactivation.
     range: uriorcurie
     pattern: "^ARO:\\d{7}$"
   has_role:
     slot_uri: RO:0000087
+    description: ChEBI roles of the metabolite, e.g. genotoxin, short-chain fatty acid.
     range: uriorcurie
     multivalued: true
     pattern: "^CHEBI:\\d+$"
   food_component:
     slot_uri: micokg:food_component
+    description: Chemical components of the food relevant to the claim, as ChEBI terms.
     range: uriorcurie
     multivalued: true
     pattern: "^CHEBI:\\d+$"

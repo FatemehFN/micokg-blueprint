@@ -1,7 +1,7 @@
 """Every competency question in queries/*/cqs.yaml runs against the toy KG.
 
 Results are compared as an order-insensitive set of rows against
-tests/expected/<file>.csv (IRIs shown as CURIEs, '|' lists sorted).
+tests/expected/<file>.csv (every question must have one) (IRIs shown as CURIEs, '|' lists sorted).
 Generate or refresh an expected file with:
     python scripts/run_cq.py <cq-id> --write-expected
 and check the output by hand before committing it.
@@ -18,20 +18,13 @@ CQS = load_cqs()
 
 @pytest.mark.parametrize("cq", CQS, ids=[cq["id"] for cq in CQS])
 def test_competency_question(kg, cq):
-    if cq.get("status") == "draft":
-        pytest.skip("draft competency question")
-
     variables, rows = run_query(kg, cq["query_text"])
-
-    if "expected" in cq:
-        with (ROOT / "tests" / "expected" / cq["expected"]).open(newline="") as fh:
-            reader = csv.DictReader(fh)
-            assert reader.fieldnames == variables, "expected CSV header must match query variables"
-            expected = [tuple(row[v] for v in variables) for row in reader]
-        got = [tuple(row[v] for v in variables) for row in rows]
-        assert sorted(got) == sorted(expected)
-    else:
-        assert len(rows) >= cq.get("min_rows", 1)
+    with (ROOT / "tests" / "expected" / cq["expected"]).open(newline="") as fh:
+        reader = csv.DictReader(fh)
+        assert reader.fieldnames == variables, "expected CSV header must match query variables"
+        expected = [tuple(row[v] for v in variables) for row in reader]
+    got = [tuple(row[v] for v in variables) for row in rows]
+    assert sorted(got) == sorted(expected)
 
 
 def test_every_cq_has_a_query_file():

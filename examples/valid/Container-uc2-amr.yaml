@@ -42,7 +42,7 @@ samples:
   - id: micokg:sample/UC2-S02
     part_of_study: micokg:study/UC2-CLIN
     compartment: human
-    host: micokg:host/UC2-P01
+    has_host: micokg:host/UC2-P01
     host_body_site: UBERON:0001988
     env_medium: UBERON:0001988
     collection_date: "2024-03-02"
@@ -51,7 +51,7 @@ samples:
   - id: micokg:sample/UC2-S03
     part_of_study: micokg:study/UC2-CLIN
     compartment: human
-    host: micokg:host/UC2-P02
+    has_host: micokg:host/UC2-P02
     host_body_site: UBERON:0001988
     env_medium: UBERON:0001988
     collection_date: "2023-12-01"      # before the waste-water sample
@@ -60,7 +60,7 @@ samples:
   - id: micokg:sample/UC2-S04
     part_of_study: micokg:study/UC2-FARM
     compartment: animal
-    host: micokg:host/UC2-PIG01
+    has_host: micokg:host/UC2-PIG01
     host_body_site: UBERON:0001988
     env_medium: UBERON:0001988
     collection_date: "2024-02-01"

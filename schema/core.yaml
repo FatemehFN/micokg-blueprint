@@ -13,6 +13,7 @@ imports:
 classes:
   NamedThing:
     abstract: true
+    description: Base class. Everything has an identifier and may have a label and a description.
     class_uri: schema:Thing
     exact_mappings:
       - biolink:NamedThing
@@ -20,7 +21,6 @@ classes:
       - id
       - name
       - description
-      - xref
 
 slots:
   id:
@@ -33,10 +33,4 @@ slots:
     description: Human-readable label.
   description:
     slot_uri: dct:description
-  xref:
-    slot_uri: skos:exactMatch
-    range: uriorcurie
-    multivalued: true
-    description: >-
-      Equivalent identifiers in other resources. Prefer maintaining mappings in
-      mappings/*.sssom.tsv; use xref only for identifiers asserted by the source.
+    description: Free-text description.

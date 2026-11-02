@@ -101,7 +101,7 @@ observations:
     simple_result: 0                   # tested, not detected
     used_procedure: OBI:0002623
 
-taxon_host_interactions:
+taxon_host_associations:
   - id: micokg:assoc/UC1-H01
     subject: NCBITaxon:573
     predicate: RO:0002454              # has host

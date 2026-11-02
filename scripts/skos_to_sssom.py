@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 import yaml
-from rdflib import OWL, RDF, Graph, Literal, Namespace, URIRef
+from rdflib import OWL, RDF, RDFS, Graph, Literal, Namespace, URIRef
 
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 SSSOM = Namespace("https://w3id.org/sssom/")
@@ -75,8 +75,10 @@ def convert(inp: Path, out: Path, mapping_set_id: str, tool_version: str) -> int
     g = Graph().parse(inp, format="turtle")
     prefixes, used = prefix_map(), {}
     rows = []
+    def label(node) -> str:
+        return str(g.value(node, SKOS.prefLabel) or g.value(node, RDFS.label) or "")
+
     for (s, p, o), conf in sorted(extract(g).items()):
-        label = lambda node: str(g.value(node, SKOS.prefLabel) or g.value(node, URIRef("http://www.w3.org/2000/01/rdf-schema#label")) or "")  # noqa: E731
         rows.append({
             "subject_id": to_curie(s, prefixes, used),
             "subject_label": label(s),

@@ -28,5 +28,3 @@ packages = ["scripts"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-markers = ["network: tests that need internet access (deselect with -m 'not network')"]
-addopts = "-m 'not network'"

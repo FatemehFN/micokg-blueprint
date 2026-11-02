@@ -18,6 +18,7 @@ classes:
   Sample:
     is_a: NamedThing
     class_uri: sosa:Sample
+    description: A physical sample with its environmental context (MIxS), host, place and date.
     exact_mappings: [OBI:0000747]
     slots:
       - part_of_study
@@ -26,7 +27,7 @@ classes:
       - env_broad_scale
       - env_local_scale
       - env_medium
-      - host
+      - has_host
       - host_body_site
       - collection_date
       - geo_loc_name
@@ -40,6 +41,7 @@ classes:
   Observation:
     is_a: NamedThing
     class_uri: sosa:Observation
+    description: One measurement on one sample, e.g. the relative abundance of a taxon or the presence of a gene.
     slots:
       - has_feature_of_interest
       - observed_property
@@ -59,15 +61,18 @@ classes:
 slots:
   part_of_study:
     slot_uri: dct:isPartOf
+    description: The study the sample belongs to.
     range: Study
   accession:
     slot_uri: dct:identifier
     description: INSDC/ENA/MGnify accession.
   compartment:
     slot_uri: micokg:compartment
+    description: One Health compartment the sample comes from.
     range: CompartmentEnum
   env_broad_scale:
     slot_uri: mixs:0000012
+    description: MIxS broad-scale environmental context, an ENVO biome.
     range: uriorcurie
     pattern: "^ENVO:\\d{8}$"
     bindings:
@@ -75,6 +80,7 @@ slots:
         obligation_level: RECOMMENDED
   env_local_scale:
     slot_uri: mixs:0000013
+    description: MIxS local-scale environmental context, an ENVO environmental system.
     range: uriorcurie
     pattern: "^ENVO:\\d{8}$"
     bindings:
@@ -82,16 +88,19 @@ slots:
         obligation_level: RECOMMENDED
   env_medium:
     slot_uri: mixs:0000014
+    description: MIxS environmental medium. An ENVO material, or a UBERON term for host-associated samples (e.g. feces).
     range: uriorcurie
     pattern: "^(ENVO:\\d{8}|UBERON:\\d{7})$"
     bindings:
       - range: EnvironmentalMaterialEnum
         obligation_level: RECOMMENDED
-  host:
-    slot_uri: micokg:host
+  has_host:
+    slot_uri: micokg:has_host
     range: Host
+    description: The host organism or participant the sample was taken from.
   host_body_site:
     slot_uri: micokg:host_body_site
+    description: Body site the sample was taken from, as a UBERON term.
     range: uriorcurie
     pattern: "^UBERON:\\d{7}$"
     bindings:
@@ -99,6 +108,7 @@ slots:
         obligation_level: RECOMMENDED
   collection_date:
     slot_uri: mixs:0000011
+    description: Date the sample was collected.
     range: date
   geo_loc_name:
     slot_uri: mixs:0000010
@@ -109,16 +119,19 @@ slots:
     description: Resolvable place identifier (GAZ, GeoNames) used for joins across samples.
   latitude:
     slot_uri: geo:lat
+    description: Decimal degrees.
     range: float
     minimum_value: -90
     maximum_value: 90
   longitude:
     slot_uri: geo:long
+    description: Decimal degrees.
     range: float
     minimum_value: -180
     maximum_value: 180
   has_feature_of_interest:
     slot_uri: sosa:hasFeatureOfInterest
+    description: The sample the observation was made on.
     range: Sample
   observed_property:
     slot_uri: sosa:observedProperty
@@ -130,9 +143,11 @@ slots:
     description: What was measured - a taxon, a gene record (micokg:gene/...) or a metabolite.
   simple_result:
     slot_uri: sosa:hasSimpleResult
+    description: The measured value. Use 0 for tested and not detected; omit what was not tested.
     range: float
   unit:
     slot_uri: qudt:unit
+    description: Unit of the result, as a QUDT or UO identifier.
     range: uriorcurie
   used_procedure:
     slot_uri: sosa:usedProcedure
@@ -140,4 +155,5 @@ slots:
     description: Assay (OBI) or tool/workflow (bio.tools, WorkflowHub) identifier.
   result_time:
     slot_uri: sosa:resultTime
+    description: Date the result was produced.
     range: date

@@ -6,4 +6,4 @@ dependencies:
   - pip
   - make
   - pip:
-      - -e .[dev]
+      - -e .[dev,docs]

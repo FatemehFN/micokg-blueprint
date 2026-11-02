@@ -32,6 +32,6 @@ The proposal names GO, ENVO, DO, SOSA, SIO, NCIT, UBERON, EFO and DCT, and the u
 ## Consequences
 
 - Pro: Pure-Python tooling with fast, offline CI.
-- Pro: The ontology evaluation matrix (`landscape/ontologies.tsv`) can change without schema churn.
+- Pro: Which ontologies are preferred can change without schema churn.
 - Con: Slims have to be rebuilt (`make slims`) when new terms are used. `make terms` checks for drift.
 - Con: Ontology structure can surprise. For example, in SO, *plasmid* is not a subclass of *mobile_genetic_element*, so query authors must check hierarchies in OLS.

@@ -22,18 +22,22 @@ WHERE {
              mixs:0000011 ?envDate .
   ?envMedium rdfs:subClassOf* ?sourceMedium .
   ?envObservation sosa:hasFeatureOfInterest ?envSample ;
-                  sio:SIO_000332 ?envGene .
+                  sio:SIO_000332 ?envGene ;
+                  sosa:hasSimpleResult ?envValue .
+  FILTER (?envValue > 0)   # 0 means tested and not detected
   ?envGene a micokg:AMRDeterminant ;
            micokg:aro_class ?aro ;
            obo:RO_0002162 ?envTaxon .
 
   # later detection in human stool at the same place
   ?humanSample micokg:host_body_site ?humanSite ;
-               micokg:host/obo:RO_0002162 obo:NCBITaxon_9606 ;
+               micokg:has_host/obo:RO_0002162 obo:NCBITaxon_9606 ;
                micokg:geo_location ?place ;
                mixs:0000011 ?humanDate .
   ?humanObservation sosa:hasFeatureOfInterest ?humanSample ;
-                    sio:SIO_000332 ?humanGene .
+                    sio:SIO_000332 ?humanGene ;
+                    sosa:hasSimpleResult ?humanValue .
+  FILTER (?humanValue > 0)
   ?humanGene a micokg:AMRDeterminant ;
              micokg:aro_class ?aro ;
              obo:RO_0002162 ?humanTaxon .

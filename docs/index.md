@@ -6,12 +6,12 @@ A draft data model for a microbiome knowledge graph (KG), written as a starting 
 
 | You are… | Read |
 |---|---|
-| New to the project | [Onboarding](onboarding.md): set up and run everything in 15 minutes |
+| New to the project | [Onboarding](onboarding.md): set up and run everything |
 | New to RDF, ontologies or SPARQL | [Knowledge-graph primer](kg-primer.md) |
 | Adding classes, slots or data | [Modelling guide](modelling-guide.md) |
 | A domain expert with questions the KG should answer | [Use cases](use-cases.md) |
 | Working on mappings or VERDANT | [VERDANT integration](verdant-integration.md) |
-| Wondering why something is modelled the way it is | The design notes under Decisions |
+| Wondering why something is modelled the way it is | The design notes, starting with [associations as nodes](adr/0001-association-reification.md) |
 
 ## The design in one picture
 

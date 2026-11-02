@@ -2,10 +2,10 @@ id: https://w3id.org/micokg
 name: micokg
 title: MiCoKnowGraph schema
 description: >-
-  Blueprint schema for the ELIXIR Microbiome Community collaborative knowledge
-  graph (BioHackathon Europe 2026, Project 16). Four layers: ontology-backed
-  entities, SOSA observations on samples, reified associations carrying context
-  and evidence, and SSSOM mappings (kept outside the schema, in mappings/).
+  Draft schema for a microbiome knowledge graph (BioHackathon Europe 2026,
+  Project 16). Three layers: entities identified by ontology terms, SOSA
+  observations on samples, and associations stored as nodes that carry context
+  and evidence. Identifier mappings are kept outside the schema, in mappings/.
 license: https://creativecommons.org/licenses/by/4.0/
 version: 0.1.0
 see_also:
@@ -55,9 +55,6 @@ prefixes:
   FOODON: http://purl.obolibrary.org/obo/FOODON_
   ExO: http://purl.obolibrary.org/obo/ExO_
   GAZ: http://purl.obolibrary.org/obo/GAZ_
-  UO: http://purl.obolibrary.org/obo/UO_
-  KEGG.ORTHOLOGY: https://www.kegg.jp/entry/
-  EC: https://www.enzyme-database.org/query.php?ec=
 
 default_prefix: micokg
 default_range: string
@@ -92,7 +89,7 @@ classes:
       - foods
       - taxon_disease_associations
       - taxon_habitat_associations
-      - taxon_host_interactions
+      - taxon_host_associations
       - taxon_metabolite_associations
       - diet_taxon_associations
       - diet_metabolite_associations
@@ -159,9 +156,9 @@ slots:
     range: TaxonHabitatAssociation
     multivalued: true
     inlined_as_list: true
-  taxon_host_interactions:
+  taxon_host_associations:
     description: Taxon to host organism claims.
-    range: TaxonHostInteraction
+    range: TaxonHostAssociation
     multivalued: true
     inlined_as_list: true
   taxon_metabolite_associations:

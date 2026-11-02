@@ -14,7 +14,7 @@ Options considered:
 1. **Direct edges only.** Simple queries and a small graph, but context and provenance are lost.
 2. **Named graph per source.** Provenance only at dataset level; still no per-claim direction or body site.
 3. **RDF-star / RDF 1.2 triple terms.** Elegant, but support across triple stores (and federation with VERDANT's endpoint) is still uneven.
-4. **Association nodes** (the n-ary relation pattern used by Biolink, SIO and KG-Microbe). Each claim is a resource with `rdf:subject`, `rdf:predicate`, `rdf:object` and context slots.
+4. **Association nodes** (the n-ary relation pattern used by Biolink, the Semanticscience Integrated Ontology (SIO) and KG-Microbe). Each claim is a resource with `rdf:subject`, `rdf:predicate`, `rdf:object` and context slots.
 
 ## Decision
 

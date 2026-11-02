@@ -1,6 +1,6 @@
 # Onboarding
 
-Goal: go from a fresh clone to a green `make all` and your first query in about 15 minutes.
+Goal: go from a fresh clone to a green `make all` and your first query.
 
 ## 1. Set up the environment
 
@@ -28,18 +28,20 @@ python3.12 -m venv .venv && source .venv/bin/activate && pip install -e ".[dev]"
 make all
 ```
 
+Everything in `make all` works offline. Only `make slims` and `make terms` need internet access.
+
 This runs, in order:
 
 | Target | What it does |
 |---|---|
 | `lint` | `linkml-lint` style and consistency checks on `schema/` |
-| `validate` | every `examples/valid/*.yaml` must pass and every `examples/invalid/*.yaml` must fail |
 | `gen` | OWL, SHACL, JSON-LD context and Markdown docs into `build/` and `docs/schema/` |
 | `rdf` | converts the YAML examples to Turtle in `build/rdf/` |
-| `shacl` | checks that RDF conforms to the generated SHACL shapes |
 | `mappings` | validates SSSOM files and converts them to RDF |
 | `spex` | exports queries as SIB SPARQL examples into `build/sparql-examples/` |
-| `test` | the full pytest suite, including every competency question |
+| `test` | the pytest suite: every valid example validates, every invalid one is rejected, RDF conforms to the SHACL shapes, mappings are valid, and every competency question returns its expected result |
+
+`make validate` and `make shacl` run the first two checks on their own, which is handy when editing data. To browse the docs locally, run `make docs-serve`.
 
 ## 3. Run a competency question
 
@@ -65,7 +67,7 @@ Try an ad-hoc query: copy a `.rq` file, edit it, then run `python scripts/run_cq
 2. Look up identifiers in [OLS](https://www.ebi.ac.uk/ols4/) and paste the CURIE, e.g. `ENVO:00002005`.
 3. Quote dates: `"2024-02-10"`.
 4. Run `make validate`.
-5. Run `make slims` when you use new ontology terms. It needs internet access and updates `examples/ontology-slims/`, which you commit.
+5. Run `make slims` when you use new ontology terms. It needs internet access and updates `examples/ontology-slims/`, which you commit. (`make terms`, which checks that each term sits in the right ontology branch, needs `pip install -e ".[terms]"` and downloads whole ontologies, so it is optional.)
 
 **Add a competency question**
 
@@ -102,7 +104,7 @@ scripts/kg.py               builds the in-memory KG used by tests and run_cq.py
 | Symptom | Fix |
 |---|---|
 | `datetime.date(...) is not of type 'string'` | Quote the date in YAML |
-| `does not match '^ENVO:\d{8}$'` | Use the CURIE, not the label or full IRI |
+| `does not match '^(ENVO:\d{8}|...'` | Use the CURIE, not the label or full IRI |
 | A query returns nothing after you add a new term | Run `make slims`; subclass queries need the term's hierarchy |
 | `FileNotFoundError: .../associations.yaml` | Run LinkML CLIs from the repo root via `make`; the scripts handle import paths |
 | `No module named linkml` in your editor | Select the `micokg` environment as the Python interpreter |

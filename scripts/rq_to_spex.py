@@ -69,17 +69,11 @@ def cq_graph(cq: dict, target: str) -> Graph:
 
 
 def export(outdir: Path) -> list[Path]:
-    import yaml
-
     written = []
-    targets = {}
     for cq in load_cqs():
-        if cq["use_case"] not in targets:
-            spec = yaml.safe_load((cq["query_path"].parent / "cqs.yaml").read_text())
-            targets[cq["use_case"]] = spec.get("target", "https://w3id.org/micokg/sparql")
         out = outdir / cq["use_case"] / f"{cq['id']}.ttl"
         out.parent.mkdir(parents=True, exist_ok=True)
-        cq_graph(cq, targets[cq["use_case"]]).serialize(out, format="turtle")
+        cq_graph(cq, cq["target"]).serialize(out, format="turtle")
         written.append(out)
     return written
 

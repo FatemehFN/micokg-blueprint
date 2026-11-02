@@ -24,7 +24,7 @@ WHERE {
                sosa:hasSimpleResult ?abundance .
   FILTER (?abundance > 0)
 
-  ?interaction a micokg:TaxonHostInteraction ;
+  ?interaction a micokg:TaxonHostAssociation ;
                rdf:subject ?taxon ;
                rdf:object ?host .
   FILTER NOT EXISTS { ?interaction micokg:negated true }

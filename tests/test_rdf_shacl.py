@@ -15,30 +15,15 @@ from pyshacl import validate as shacl_validate
 from rdflib import Graph
 from rdflib.namespace import SH
 
-from scripts.kg import ROOT, SCHEMA, yaml_to_turtle
+from scripts.kg import ROOT, SCHEMA, schemaview, yaml_to_turtle
 
 VALID = sorted((ROOT / "examples" / "valid").glob("*.yaml"))
 
-# Predicates whose values must be ontology terms or other resources, never literals.
-IRI_PREDICATES = [
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
-    "https://w3id.org/mixs/0000012",
-    "https://w3id.org/mixs/0000013",
-    "https://w3id.org/mixs/0000014",
-    "https://w3id.org/micokg/host_body_site",
-    "https://w3id.org/micokg/anatomical_context",
-    "https://w3id.org/micokg/environmental_context",
-    "https://w3id.org/micokg/has_evidence",
-    "http://purl.obolibrary.org/obo/RO_0002162",
-    "http://purl.obolibrary.org/obo/RO_0000085",
-    "http://purl.obolibrary.org/obo/RO_0000087",
-    "https://w3id.org/micokg/aro_class",
-    "https://w3id.org/micokg/genomic_context",
-    "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
-    "http://semanticscience.org/resource/SIO_000332",
-]
+def iri_predicates() -> list[str]:
+    """Every slot whose values are identifiers (range uriorcurie), except the id slot itself."""
+    sv = schemaview()
+    return [sv.get_uri(name, expand=True) for name, slot in sv.all_slots().items()
+            if slot.range == "uriorcurie" and name != "id"]
 
 
 @functools.cache
@@ -60,6 +45,6 @@ def test_shacl_conforms(path):
 @pytest.mark.parametrize("path", VALID, ids=[p.name for p in VALID])
 def test_ontology_slots_are_iris(path):
     data = Graph().parse(data=yaml_to_turtle(path), format="turtle")
-    values = ", ".join(f"<{p}>" for p in IRI_PREDICATES)
+    values = ", ".join(f"<{p}>" for p in iri_predicates())
     literals = list(data.query(f"SELECT ?s ?p ?o WHERE {{ ?s ?p ?o FILTER(?p IN ({values}) && isLiteral(?o)) }}"))
     assert literals == [], f"literal values where IRIs are required: {literals[:5]}"

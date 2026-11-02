@@ -19,6 +19,7 @@ classes:
   Association:
     is_a: NamedThing
     abstract: true
+    description: A claim linking a subject to an object, with the context and evidence needed to interpret it.
     class_uri: micokg:Association
     exact_mappings: [biolink:Association]
     close_mappings: [sio:SIO_000897, rdf:Statement]
@@ -53,6 +54,7 @@ classes:
   TaxonHabitatAssociation:
     is_a: Association
     class_uri: micokg:TaxonHabitatAssociation
+    description: A taxon is found in a habitat (ENVO term).
     slot_usage:
       subject:
         pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
@@ -61,9 +63,10 @@ classes:
       object:
         pattern: "^ENVO:\\d{8}$"
 
-  TaxonHostInteraction:
+  TaxonHostAssociation:
     is_a: Association
-    class_uri: micokg:TaxonHostInteraction
+    class_uri: micokg:TaxonHostAssociation
+    description: A taxon has a host, or interacts with, another taxon.
     slot_usage:
       subject:
         pattern: "^(NCBITaxon:\\d+|GTDB:.+)$"
@@ -87,6 +90,7 @@ classes:
   DietTaxonAssociation:
     is_a: Association
     class_uri: micokg:DietTaxonAssociation
+    description: A food or diet changes the abundance of a taxon.
     slot_usage:
       subject:
         pattern: "^(FOODON|CHEBI|NCIT|micokg):.+$"
@@ -98,6 +102,7 @@ classes:
   DietMetaboliteAssociation:
     is_a: Association
     class_uri: micokg:DietMetaboliteAssociation
+    description: A food or diet changes the level of a metabolite.
     slot_usage:
       subject:
         pattern: "^(FOODON|CHEBI|NCIT|micokg):.+$"
@@ -109,6 +114,7 @@ classes:
   MetaboliteDiseaseAssociation:
     is_a: Association
     class_uri: micokg:MetaboliteDiseaseAssociation
+    description: A metabolite is associated with, or contributes to, a disease.
     slot_usage:
       subject:
         pattern: "^CHEBI:\\d+$"
@@ -120,6 +126,7 @@ classes:
 slots:
   subject:
     slot_uri: rdf:subject
+    description: The entity the claim is about (its identifier).
     range: uriorcurie
     required: true
   predicate:
@@ -132,33 +139,41 @@ slots:
       RO:0002303 has habitat, RO:0002454 has host, RO:0002437 biotically interacts with.
   object:
     slot_uri: rdf:object
+    description: The entity the subject is linked to (its identifier).
     range: uriorcurie
     required: true
   direction:
     slot_uri: micokg:direction
+    description: Whether the subject is increased, decreased, present or absent in the compared condition.
     range: DirectionEnum
   effect_size:
     slot_uri: micokg:effect_size
+    description: Effect size as reported by the source, e.g. log2 fold change.
     range: float
   p_value:
     slot_uri: micokg:p_value
+    description: P-value as reported by the source.
     range: float
     minimum_value: 0
     maximum_value: 1
   anatomical_context:
     slot_uri: micokg:anatomical_context
+    description: Body site the claim applies to (UBERON).
     range: uriorcurie
     pattern: "^UBERON:\\d{7}$"
   environmental_context:
     slot_uri: micokg:environmental_context
+    description: Environment the claim applies to (ENVO).
     range: uriorcurie
     pattern: "^ENVO:\\d{8}$"
   host_context:
     slot_uri: micokg:host_context
+    description: Host taxon the claim applies to, e.g. NCBITaxon:9606 human.
     range: uriorcurie
     pattern: "^NCBITaxon:\\d+$"
   has_evidence:
     slot_uri: micokg:has_evidence
+    description: Type of evidence behind the claim (ECO terms).
     range: uriorcurie
     multivalued: true
     pattern: "^ECO:\\d{7}$"
@@ -167,17 +182,21 @@ slots:
         obligation_level: RECOMMENDED
   source_study:
     slot_uri: dct:source
+    description: The study or resource the claim comes from.
     range: Study
     required: true
   derived_from:
     slot_uri: prov:wasDerivedFrom
+    description: Observations the claim was derived from, if any.
     range: Observation
     multivalued: true
   confidence:
     slot_uri: micokg:confidence
+    description: Confidence between 0 and 1. How it is calibrated is an open question.
     range: float
     minimum_value: 0
     maximum_value: 1
   negated:
     slot_uri: micokg:negated
+    description: True when the source reports that the association was looked for and not found.
     range: boolean

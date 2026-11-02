@@ -9,7 +9,7 @@
 # mapping_set_description: Curated disease identifier mappings needed by MiCoKnowGraph data. Reuse MONDO's own SSSOM files for bulk DOID/NCIT/EFO mappings; add rows here only for gaps or for terms the KG uses.
 # license: https://creativecommons.org/licenses/by/4.0/
 # mapping_date: 2026-09-15
-subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	author_id	confidence	comment
-DOID:9256	colorectal cancer	skos:exactMatch	MONDO:0005575	colorectal cancer	semapv:ManualMappingCuration	ORCID:0000-0000-0000-0000	0.95	Also asserted as a database cross-reference in MONDO.
-DOID:0050861	colorectal adenocarcinoma	skos:exactMatch	MONDO:0005008	colorectal adenocarcinoma	semapv:ManualMappingCuration	ORCID:0000-0000-0000-0000	0.95
-NCIT:C5105	Colorectal Adenocarcinoma	skos:exactMatch	MONDO:0005008	colorectal adenocarcinoma	semapv:ManualMappingCuration	ORCID:0000-0000-0000-0000	0.9
+subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	author_id	reviewer_id	confidence	comment
+DOID:9256	colorectal cancer	skos:exactMatch	MONDO:0005575	colorectal cancer	semapv:ManualMappingCuration	ORCID:0000-0000-0000-0000		0.95	Also asserted as a database cross-reference in MONDO.
+DOID:0050861	colorectal adenocarcinoma	skos:exactMatch	MONDO:0005008	colorectal adenocarcinoma	semapv:ManualMappingCuration	ORCID:0000-0000-0000-0000		0.95	
+NCIT:C5105	Colorectal Adenocarcinoma	skos:exactMatch	MONDO:0005008	colorectal adenocarcinoma	semapv:ManualMappingCuration	ORCID:0000-0000-0000-0000		0.9	

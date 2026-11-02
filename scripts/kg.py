@@ -11,7 +11,6 @@ subject-predicate-object edges produced by scripts/materialise_shortcuts.rq.
 from __future__ import annotations
 
 import functools
-import sys
 import types
 from pathlib import Path
 
@@ -37,9 +36,10 @@ def merged_schema():
     linkml.validator.validate() resolves imports relative to the working
     directory, so it is given this self-contained SchemaDefinition instead.
     """
+    from copy import deepcopy
     from linkml_runtime import SchemaView
 
-    sv = SchemaView(str(SCHEMA))
+    sv = SchemaView(deepcopy(schemaview().schema))
     sv.merge_imports()
     return sv.schema
 
@@ -49,11 +49,7 @@ def python_model() -> types.ModuleType:
     """Python dataclasses generated from the schema (needed by the RDF dumper)."""
     from linkml.generators.pythongen import PythonGenerator
 
-    code = PythonGenerator(str(SCHEMA)).serialize()
-    module = types.ModuleType("micokg_model")
-    sys.modules["micokg_model"] = module
-    exec(compile(code, "micokg_model", "exec"), module.__dict__)  # noqa: S102
-    return module
+    return PythonGenerator(str(SCHEMA)).compile_module()
 
 
 def yaml_to_turtle(path: Path) -> str:
@@ -127,6 +123,7 @@ def load_cqs() -> list[dict]:
         for cq in spec.get("competency_questions", []):
             cq = dict(cq)
             cq["use_case"] = spec["use_case"]
+            cq["target"] = spec.get("target", "https://w3id.org/micokg/sparql")
             cq["query_path"] = cqs_file.parent / cq["query"]
             cq["query_text"] = cq["query_path"].read_text()
             cqs.append(cq)

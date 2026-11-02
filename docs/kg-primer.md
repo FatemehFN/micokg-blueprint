@@ -39,7 +39,7 @@ So a question about *colorectal cancer* should also find records coded as *color
 | Taxa | NCBITaxon |
 | Environments | ENVO |
 | Anatomy | UBERON |
-| Diseases | MONDO / DOID / NCIT |
+| Diseases | MONDO / DOID / NCIT / EFO |
 | Chemicals and metabolites | ChEBI |
 | Functions | GO |
 | Sequence features | SO |

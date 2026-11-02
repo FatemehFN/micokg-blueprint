@@ -2,7 +2,7 @@
 
 A draft data model for a microbiome knowledge graph, written for [BioHackathon Europe 2026, Project 16 (MiCoKnowGraph)](https://github.com/elixir-europe/biohackathon-projects-2026/blob/main/16.md).
 
-I put this together before the event as something concrete to discuss. It is a starting point, not a proposal. I drafted it with help from Claude and reviewed it myself. The toy data is invented; every ontology identifier is real.
+I put this together before the event as something concrete to discuss. It is a starting point, not a proposal. I drafted it with help from Claude and reviewed it myself. The toy data is invented, including the studies, people and papers in it. The ontology terms are real.
 
 Docs: <https://fatemehfn.github.io/micokg-blueprint/>
 
@@ -10,11 +10,10 @@ Docs: <https://fatemehfn.github.io/micokg-blueprint/>
 
 | Part | What it does | Where |
 |---|---|---|
-| Schema | A [LinkML](https://linkml.io) model with three layers: entities (taxa, genes, metabolites, diseases, foods, all identified by ontology terms), samples and observations (MIxS plus SOSA), and associations (claims such as "taxon X is increased in disease Y", stored as nodes so that direction, body site, evidence and source stay attached and conflicting findings can coexist) | `schema/` |
+| Schema | A [LinkML](https://linkml.io) model in three layers. Entities: taxa, genes, metabolites, diseases and foods, identified by ontology terms. Samples and observations: MIxS context plus SOSA measurements. Associations: claims such as "taxon X is increased in disease Y", stored as nodes so that direction, body site, evidence and source stay attached and conflicting findings can coexist | `schema/` |
 | Toy data | One small dataset per use case, validated against the schema | `examples/valid/` |
 | Competency questions | 12 questions as SPARQL queries. Each runs as a test against the toy data | `queries/`, `tests/` |
 | Mappings | SSSOM tables linking equivalent identifiers, for example DOID to MONDO | `mappings/` |
-| Landscape | Tables of existing microbiome knowledge graphs and candidate ontologies | `landscape/` |
 | Docs | A primer on RDF, ontologies and SPARQL, a modelling guide, and three design notes | `docs/` |
 
 ## Use cases
@@ -52,10 +51,11 @@ examples/          toy data (valid and deliberately invalid), ontology slims for
 queries/           competency questions, one .rq file each
 tests/             pytest suite with expected query results
 mappings/          SSSOM mapping tables
-landscape/         existing KGs and ontologies (TSV)
 docs/              guides and design notes
 scripts/           build and conversion tools
 ```
+
+The inventory of existing knowledge graphs, data sources and ontologies is kept in the project's coordination sheet, not here.
 
 ## Related
 

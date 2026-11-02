@@ -11,6 +11,7 @@ classes:
   Study:
     is_a: NamedThing
     class_uri: micokg:Study
+    description: A study, dataset or resource that samples and claims come from.
     close_mappings: [OBI:0000066, schema:Dataset]
     slots:
       - title
@@ -23,6 +24,7 @@ classes:
 slots:
   title:
     slot_uri: dct:title
+    description: Title of the study or dataset.
   creator:
     slot_uri: dct:creator
     range: uriorcurie
@@ -30,9 +32,11 @@ slots:
     description: ORCID identifiers.
   license:
     slot_uri: dct:license
+    description: Licence URL of the source data.
     range: uri
   issued:
     slot_uri: dct:issued
+    description: Publication or release date.
     range: date
   references:
     slot_uri: dct:references
