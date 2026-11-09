@@ -24,6 +24,7 @@ nav:
   - Design:
       - Modelling guide: modelling-guide.md
       - Use cases: use-cases.md
+      - Competency questions from the sheet: cq-alignment.md
       - VERDANT integration: verdant-integration.md
       - Decisions:
           - "0001 Reified associations": adr/0001-association-reification.md

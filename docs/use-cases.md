@@ -11,6 +11,8 @@ Competency questions (CQs) are the questions the knowledge graph must be able to
 
 UC3 is the most complete one; copy its structure.
 
+The team's own use cases and competency questions are in the project's coordination sheet and differ from the four below. How they map onto this schema, and what would need adding, is in [Competency questions from the coordination sheet](cq-alignment.md). In short: sheet use case 1 (clouds) corresponds to UC1, sheet use case 2 (plasmids in cancer) spans UC2 and UC3, UC4 has no counterpart in the sheet, and the sheet's macaque and crop-biocontrol use cases are new.
+
 ## UC1: Aeromicrobiome
 
 | ID | Question | Tests the model on… |
