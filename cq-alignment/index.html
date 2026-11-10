@@ -1,0 +1,1653 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Draft data model for a microbiome knowledge graph (BioHackathon Europe 2026, Project 16)">
+      
+      
+      
+      
+        <link rel="prev" href="../use-cases/">
+      
+      
+        <link rel="next" href="../verdant-integration/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Competency questions from the sheet - MiCoKnowGraph</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#competency-questions-from-the-coordination-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MiCoKnowGraph" class="md-header__button md-logo" aria-label="MiCoKnowGraph" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MiCoKnowGraph
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Competency questions from the sheet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FatemehFN/micokg-blueprint" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MiCoKnowGraph" class="md-nav__button md-logo" aria-label="MiCoKnowGraph" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MiCoKnowGraph
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FatemehFN/micokg-blueprint" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kg-primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge-graph primer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelling-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelling guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Competency questions from the sheet
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Competency questions from the sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases-sheet-versus-this-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use cases: sheet versus this repository
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-the-verdicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to read the verdicts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-1-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use case 1: clouds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use case 1: clouds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cq-1-taxa-diversity-indices-and-abundances-of-photosynthetic-versus-non-photosynthetic-organisms-in-cloud-samples-at-puy-de-dome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 1. Taxa, diversity indices and abundances of photosynthetic versus non-photosynthetic organisms in cloud samples at Puy de Dôme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-2-physiological-state-of-photosynthetic-organisms-and-the-effect-of-stressors-on-photosynthetic-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 2. Physiological state of photosynthetic organisms and the effect of stressors on photosynthetic efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-3-enriched-carbon-fixation-pathways-and-genes-compared-with-non-photosynthetic-organisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 3. Enriched carbon-fixation pathways and genes, compared with non-photosynthetic organisms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-4-metabolic-by-products-and-their-effect-on-cloud-chemistry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 4. Metabolic by-products and their effect on cloud chemistry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-5-biogeographical-differences-between-puy-de-dome-and-other-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 5. Biogeographical differences between Puy de Dôme and other sites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-6-diurnal-cloud-lifecycle-and-seasonal-variation-of-photosynthetic-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 6. Diurnal, cloud-lifecycle and seasonal variation of photosynthetic activity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-2-plasmids-in-cancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use case 2: plasmids in cancer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use case 2: plasmids in cancer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cq-7-taxa-plasmid-replicons-diversity-and-abundance-in-tumour-versus-adjacent-normal-tissue-and-healthy-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 7. Taxa, plasmid replicons, diversity and abundance in tumour versus adjacent normal tissue and healthy controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-8-longitudinal-resistome-and-plasmid-evolution-across-clinical-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 8. Longitudinal resistome and plasmid evolution across clinical milestones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-9-antibiotics-before-immunotherapy-depletion-of-commensals-resistome-expansion-metabolites-and-treatment-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 9. Antibiotics before immunotherapy: depletion of commensals, resistome expansion, metabolites and treatment response
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additions-in-priority-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additions, in priority order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontologies-named-in-the-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ontologies named in the sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-two-new-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The two new use cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-order-of-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suggested order of work
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verdant-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VERDANT integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0001-association-reification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0001 Reified associations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0002-identifier-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0002 Identifiers and IRIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0003-ontology-reuse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0003 Ontology reuse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases-sheet-versus-this-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use cases: sheet versus this repository
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-the-verdicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to read the verdicts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-1-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use case 1: clouds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use case 1: clouds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cq-1-taxa-diversity-indices-and-abundances-of-photosynthetic-versus-non-photosynthetic-organisms-in-cloud-samples-at-puy-de-dome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 1. Taxa, diversity indices and abundances of photosynthetic versus non-photosynthetic organisms in cloud samples at Puy de Dôme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-2-physiological-state-of-photosynthetic-organisms-and-the-effect-of-stressors-on-photosynthetic-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 2. Physiological state of photosynthetic organisms and the effect of stressors on photosynthetic efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-3-enriched-carbon-fixation-pathways-and-genes-compared-with-non-photosynthetic-organisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 3. Enriched carbon-fixation pathways and genes, compared with non-photosynthetic organisms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-4-metabolic-by-products-and-their-effect-on-cloud-chemistry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 4. Metabolic by-products and their effect on cloud chemistry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-5-biogeographical-differences-between-puy-de-dome-and-other-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 5. Biogeographical differences between Puy de Dôme and other sites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-6-diurnal-cloud-lifecycle-and-seasonal-variation-of-photosynthetic-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 6. Diurnal, cloud-lifecycle and seasonal variation of photosynthetic activity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-2-plasmids-in-cancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use case 2: plasmids in cancer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use case 2: plasmids in cancer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cq-7-taxa-plasmid-replicons-diversity-and-abundance-in-tumour-versus-adjacent-normal-tissue-and-healthy-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 7. Taxa, plasmid replicons, diversity and abundance in tumour versus adjacent normal tissue and healthy controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-8-longitudinal-resistome-and-plasmid-evolution-across-clinical-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 8. Longitudinal resistome and plasmid evolution across clinical milestones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cq-9-antibiotics-before-immunotherapy-depletion-of-commensals-resistome-expansion-metabolites-and-treatment-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQ 9. Antibiotics before immunotherapy: depletion of commensals, resistome expansion, metabolites and treatment response
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additions-in-priority-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additions, in priority order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontologies-named-in-the-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ontologies named in the sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-two-new-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The two new use cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-order-of-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suggested order of work
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="competency-questions-from-the-coordination-sheet">Competency questions from the coordination sheet<a class="headerlink" href="#competency-questions-from-the-coordination-sheet" title="Permanent link">&para;</a></h1>
+<p>The team's use cases and competency questions (CQs) live in the project's coordination sheet. This page checks the nine CQs written there (as of 8 November 2026) against the schema in this repository: what each one needs, what the schema already holds, and what would have to be added. It ends with the additions in priority order and a suggestion for which CQs to translate into SPARQL first.</p>
+<p>The CQs are quoted in short form; the full text, entities and relationships are in the sheet ("Task 1 - Competency Questions").</p>
+<h2 id="use-cases-sheet-versus-this-repository">Use cases: sheet versus this repository<a class="headerlink" href="#use-cases-sheet-versus-this-repository" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Sheet</th>
+<th>Owner</th>
+<th>Repository</th>
+<th>Fit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use case 1, Photosynthetic biodiversity and activity in clouds</td>
+<td>Bérénice</td>
+<td>UC1 Aeromicrobiome</td>
+<td>Same domain (air samples, taxa, gene functions). The sheet's version is about one site (Puy de Dôme), photosynthetic organisms, and many physical measurements.</td>
+</tr>
+<tr>
+<td>Use case 2, Plasmids in the microbiome of diseases, especially cancer</td>
+<td>Niko</td>
+<td>UC2 AMR transmission and UC3 Host–microbiome in cancer</td>
+<td>Covers both: taxa associated with tumours (UC3) and AMR genes on mobile elements (UC2). Plasmids as objects in their own right are new.</td>
+</tr>
+<tr>
+<td>Use case 3, Sociability and gut bacteria in a macaque population</td>
+<td>Caprice</td>
+<td>none</td>
+<td>New. Needs host-level behaviour and health attributes; see the end of this page.</td>
+</tr>
+<tr>
+<td>Use case 4</td>
+<td>not started</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Use case 5, SynCom traits in crop biocontrol</td>
+<td>Pedro</td>
+<td>none</td>
+<td>New. Needs field-trial design, treatments and synthetic communities; see the end of this page.</td>
+</tr>
+<tr>
+<td>none</td>
+<td></td>
+<td>UC4 Nutrition</td>
+<td>Not in the sheet. Kept as it exercises diet, taxon, metabolite and disease chains, which CQ 9 also needs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-read-the-verdicts">How to read the verdicts<a class="headerlink" href="#how-to-read-the-verdicts" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Answerable now</strong>: the schema holds the data and the query can be written against the toy data.</li>
+<li><strong>Small addition</strong>: a slot, enum or class is missing; the addition is listed and is a few lines of LinkML.</li>
+<li><strong>Not a schema question</strong>: the relationship in the sheet is a comparison or statistic that a query computes (<code>comparedTo</code>, <code>differsFrom</code>, <code>hasSimilarity</code>), or a mechanistic claim that would only ever be a literature statement with free text behind it. These are noted and not modelled.</li>
+</ul>
+<h2 id="use-case-1-clouds">Use case 1: clouds<a class="headerlink" href="#use-case-1-clouds" title="Permanent link">&para;</a></h2>
+<h3 id="cq-1-taxa-diversity-indices-and-abundances-of-photosynthetic-versus-non-photosynthetic-organisms-in-cloud-samples-at-puy-de-dome">CQ 1. Taxa, diversity indices and abundances of photosynthetic versus non-photosynthetic organisms in cloud samples at Puy de Dôme<a class="headerlink" href="#cq-1-taxa-diversity-indices-and-abundances-of-photosynthetic-versus-non-photosynthetic-organisms-in-cloud-samples-at-puy-de-dome" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Samples at a named site, with date, coordinates, altitude, sampling method and weather</td>
+<td><code>Sample</code> has <code>geo_location</code>, <code>geo_loc_name</code>, <code>latitude</code>, <code>longitude</code>, <code>collection_date</code>, <code>env_*</code> (ENVO). Altitude and weather are not slots; they can be sample-level observations (addition 1) or MIxS air-package slots.</td>
+</tr>
+<tr>
+<td>Relative or absolute abundance of a taxon in a sample (<code>hasAbundance</code>)</td>
+<td>Answerable now: <code>Observation</code> with <code>observed_property</code> relative_abundance, <code>is_about</code> the taxon, <code>simple_result</code>, <code>unit</code> (cells/m³, gene copies).</td>
+</tr>
+<tr>
+<td>Diversity indices per sample (<code>hasDiversityMetric</code>)</td>
+<td>Small addition 1: a Shannon index is about the sample, not a taxon, but <code>is_about</code> is required.</td>
+</tr>
+<tr>
+<td>Grouping taxa as photosynthetic or not (<code>belongsToGroup</code>)</td>
+<td>Small addition 4: a taxon-level trait, e.g. taxon <em>capable of</em> photosynthesis (GO:0015979). Cyanobacteria can also be found by taxonomy alone.</td>
+</tr>
+<tr>
+<td><code>comparedTo</code></td>
+<td>Not a schema question: the query groups by trait and compares.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>small additions 1 and 4</strong>. The taxon-and-abundance half is answerable now.</p>
+<h3 id="cq-2-physiological-state-of-photosynthetic-organisms-and-the-effect-of-stressors-on-photosynthetic-efficiency">CQ 2. Physiological state of photosynthetic organisms and the effect of stressors on photosynthetic efficiency<a class="headerlink" href="#cq-2-physiological-state-of-photosynthetic-organisms-and-the-effect-of-stressors-on-photosynthetic-efficiency" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measurements per sample or per organism: PSII yield, chlorophyll fluorescence, pigments, carbon fixation rate, gene expression (psbA, rbcL)</td>
+<td>Addition 1 for sample-level values; gene expression is an <code>Observation</code> <code>is_about</code> a <code>FunctionalGene</code> with a new observed property (expression) and unit.</td>
+</tr>
+<tr>
+<td>Stressor levels (UV index, temperature, pH, nutrients)</td>
+<td>Addition 1: sample-level observations, or MIxS slots.</td>
+</tr>
+<tr>
+<td>Physiological state as a category (active, dormant, stressed, damaged)</td>
+<td>Small addition 2: <code>simple_result</code> is numeric only; categorical results need an ontology-term result.</td>
+</tr>
+<tr>
+<td><code>influencedBy</code>: stressor changes efficiency</td>
+<td>Not a schema question in this round; it is a finding, not a measurement. Could later be an association between an exposure and a process.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>small additions 1 and 2</strong> for the measurements; the mechanistic half is not modelled.</p>
+<h3 id="cq-3-enriched-carbon-fixation-pathways-and-genes-compared-with-non-photosynthetic-organisms">CQ 3. Enriched carbon-fixation pathways and genes, compared with non-photosynthetic organisms<a class="headerlink" href="#cq-3-enriched-carbon-fixation-pathways-and-genes-compared-with-non-photosynthetic-organisms" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Genes (cbbL, ccmK, prk, ppc) with function and host taxon (<code>exhibitsGene</code>)</td>
+<td>Answerable now: <code>FunctionalGene</code> with <code>gene_symbol</code>, <code>has_function</code> (GO), <code>gene_family</code> (KO, EC), <code>in_taxon</code>.</td>
+</tr>
+<tr>
+<td>Pathways (<code>hasMetabolicPathway</code>)</td>
+<td>GO biological processes cover them (e.g. GO:0015977 carbon fixation, GO:0019253 reductive pentose-phosphate cycle). A KEGG pathway identifier can go in <code>gene_family</code> today; a <code>Pathway</code> class is optional.</td>
+</tr>
+<tr>
+<td>Gene presence or abundance per sample</td>
+<td>Answerable now (<code>gene_presence</code>; add an abundance or expression property).</td>
+</tr>
+<tr>
+<td>Enzyme activity, carbon flux, measured under conditions (<code>measuredUnder</code>)</td>
+<td>Addition 1: sample-level observations; conditions are other observations on the same sample, joined by sample.</td>
+</tr>
+<tr>
+<td><code>comparesTo</code></td>
+<td>Not a schema question.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>answerable now for genes and pathways; addition 1 for the rates</strong>.</p>
+<h3 id="cq-4-metabolic-by-products-and-their-effect-on-cloud-chemistry">CQ 4. Metabolic by-products and their effect on cloud chemistry<a class="headerlink" href="#cq-4-metabolic-by-products-and-their-effect-on-cloud-chemistry" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organism produces by-product (<code>producesByproduct</code>)</td>
+<td>Answerable now: <code>TaxonMetaboliteAssociation</code> with RO:0002234 <em>has output</em> and a ChEBI object (oxalic acid, hydrogen peroxide, isoprene).</td>
+</tr>
+<tr>
+<td>Cloud chemistry parameters (pH, ROS, ions) per sample</td>
+<td>Addition 1.</td>
+</tr>
+<tr>
+<td>By-product changes a parameter (<code>influencesChemistry</code>, <code>hasMechanism</code>)</td>
+<td>Not a schema question in this round: chemistry and mechanism belong to the literature, not the KG's measurements.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>answerable now for production; addition 1 for chemistry; mechanisms not modelled</strong>.</p>
+<h3 id="cq-5-biogeographical-differences-between-puy-de-dome-and-other-sites">CQ 5. Biogeographical differences between Puy de Dôme and other sites<a class="headerlink" href="#cq-5-biogeographical-differences-between-puy-de-dome-and-other-sites" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sites and their community composition (<code>hasComposition</code>)</td>
+<td>Answerable now: aggregate observations by <code>geo_location</code>.</td>
+</tr>
+<tr>
+<td>Atmospheric conditions per site</td>
+<td>Addition 1.</td>
+</tr>
+<tr>
+<td>Functional traits of taxa (<code>hasTrait</code>, <code>adaptsTo</code>)</td>
+<td>Addition 4 (taxon trait association).</td>
+</tr>
+<tr>
+<td>Ecological interactions (<code>interactsWith</code>)</td>
+<td>Answerable now: <code>TaxonHostAssociation</code> with RO:0002437 <em>biotically interacts with</em>; competition and mutualism are RO sub-relations and could be allowed in the predicate pattern.</td>
+</tr>
+<tr>
+<td><code>differsFrom</code>, <code>hasSimilarity</code></td>
+<td>Not a schema question: beta diversity is computed.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>small additions 1 and 4</strong>.</p>
+<h3 id="cq-6-diurnal-cloud-lifecycle-and-seasonal-variation-of-photosynthetic-activity">CQ 6. Diurnal, cloud-lifecycle and seasonal variation of photosynthetic activity<a class="headerlink" href="#cq-6-diurnal-cloud-lifecycle-and-seasonal-variation-of-photosynthetic-activity" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time of day of sampling</td>
+<td>Small addition 3: <code>collection_date</code> is a date; a datetime, or a separate time slot, is needed for day/night.</td>
+</tr>
+<tr>
+<td>Cloud lifecycle stage and season as sample attributes</td>
+<td>Addition 3: a categorical sampling-context slot (or a categorical observation, addition 2).</td>
+</tr>
+<tr>
+<td>Activity metrics and gene expression over time</td>
+<td>Addition 1 plus <code>result_time</code>, which exists.</td>
+</tr>
+<tr>
+<td><code>variesWith</code>, <code>drivenBy</code>, <code>correlatesWith</code>, <code>hasAmplitude</code></td>
+<td>Not a schema question: computed over the time series.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>small additions 1, 2 and 3</strong>.</p>
+<h2 id="use-case-2-plasmids-in-cancer">Use case 2: plasmids in cancer<a class="headerlink" href="#use-case-2-plasmids-in-cancer" title="Permanent link">&para;</a></h2>
+<h3 id="cq-7-taxa-plasmid-replicons-diversity-and-abundance-in-tumour-versus-adjacent-normal-tissue-and-healthy-controls">CQ 7. Taxa, plasmid replicons, diversity and abundance in tumour versus adjacent normal tissue and healthy controls<a class="headerlink" href="#cq-7-taxa-plasmid-replicons-diversity-and-abundance-in-tumour-versus-adjacent-normal-tissue-and-healthy-controls" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Specimen from a body site, with pathology status (<code>sampledFrom</code>)</td>
+<td><code>host_body_site</code> (UBERON) exists. Tumour versus adjacent normal versus healthy is a small addition 3: a sample condition slot (NCIT or MONDO term). Specimen type (FFPE, fresh-frozen, stool, cell-free DNA) is a second slot in the same addition.</td>
+</tr>
+<tr>
+<td>Patient's cancer type</td>
+<td>Answerable now: <code>Host.has_disease</code> (MONDO).</td>
+</tr>
+<tr>
+<td>Taxon abundance per sample</td>
+<td>Answerable now.</td>
+</tr>
+<tr>
+<td>Plasmids with replicon type, mobility class, copy number, host taxon (<code>harboursPlasmid</code>, <code>hasMobilityClass</code>, <code>hasCopyNumber</code>)</td>
+<td>Small addition 5: a <code>Plasmid</code> (mobile genetic element) class. Today only genes know they sit on a plasmid (<code>genomic_context</code> SO:0000155).</td>
+</tr>
+<tr>
+<td>Diversity indices</td>
+<td>Addition 1.</td>
+</tr>
+<tr>
+<td>Fold change, p-values, LDA scores, tumour versus normal (<code>comparedTo</code>)</td>
+<td>Answerable now as claims: <code>TaxonDiseaseAssociation</code> with <code>direction</code>, <code>effect_size</code>, <code>p_value</code>, <code>anatomical_context</code>, <code>has_evidence</code>, <code>source_study</code>. The existing query <code>uc3-cq01</code> (taxa associated with colorectal cancer, with direction and evidence) is a working subset of this CQ.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>small additions 1, 3 and 5</strong>. The differential-abundance half is answerable now.</p>
+<h3 id="cq-8-longitudinal-resistome-and-plasmid-evolution-across-clinical-milestones">CQ 8. Longitudinal resistome and plasmid evolution across clinical milestones<a class="headerlink" href="#cq-8-longitudinal-resistome-and-plasmid-evolution-across-clinical-milestones" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMR genes with ARO class, drug class, mechanism, on plasmids</td>
+<td>Answerable now: <code>AMRDeterminant</code> with <code>aro_class</code>, <code>confers_resistance_to</code>, <code>resistance_mechanism</code>, <code>genomic_context</code>.</td>
+</tr>
+<tr>
+<td>Repeated samples from one patient over time</td>
+<td>Answerable now: <code>Sample.has_host</code> plus <code>collection_date</code>.</td>
+</tr>
+<tr>
+<td>Clinical milestones and treatments with dates (<code>variesAcrossTimepoint</code>, <code>drivenBySelectivePressure</code>, <code>hasBaseline</code>)</td>
+<td>Small addition 6: host-level events (antibiotic given, chemotherapy, surgery, relapse) with a type and a date, so observations can be placed before or after them.</td>
+</tr>
+<tr>
+<td>Genes co-located on one plasmid (<code>coSelectedWith</code>)</td>
+<td>Addition 5: a plasmid record that lists the genes it carries.</td>
+</tr>
+<tr>
+<td><code>exhibitsEvolutionaryShift</code> (IS26 amplification, co-integrates, SNPs)</td>
+<td>Not a schema question in this round: genome-structure findings per strain are better kept in the source data and cited.</td>
+</tr>
+<tr>
+<td><code>precedesClinicalEvent</code></td>
+<td>Derivable from dates once addition 6 exists; the causal reading stays with the literature.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>small additions 5 and 6</strong>; the AMR gene layer is answerable now.</p>
+<h3 id="cq-9-antibiotics-before-immunotherapy-depletion-of-commensals-resistome-expansion-metabolites-and-treatment-response">CQ 9. Antibiotics before immunotherapy: depletion of commensals, resistome expansion, metabolites and treatment response<a class="headerlink" href="#cq-9-antibiotics-before-immunotherapy-depletion-of-commensals-resistome-expansion-metabolites-and-treatment-response" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Needs</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Antibiotic decreases a taxon (<code>depletesTaxon</code>)</td>
+<td>Nearly now: <code>DietTaxonAssociation</code> accepts a CHEBI subject and <code>direction</code> decreased, but its name says diet. Small addition 7: rename it to an exposure-to-taxon association that covers foods and drugs.</td>
+</tr>
+<tr>
+<td>Taxon produces metabolite, metabolite linked to outcome (<code>reducesMetabolite</code>, <code>impairsImmunePriming</code>)</td>
+<td>Taxon to metabolite answerable now. Metabolite to outcome exists for diseases (<code>MetaboliteDiseaseAssociation</code>); immune processes would need GO or HP objects allowed in its pattern.</td>
+</tr>
+<tr>
+<td>Resistome load and plasmid richness per sample (<code>enrichesPlasmidome</code>)</td>
+<td>Answerable now for genes (observations about <code>AMRDeterminant</code> records, aggregated); plasmids need addition 5.</td>
+</tr>
+<tr>
+<td>Therapy, exposure window and response (<code>attenuatesEfficacyOf</code>, <code>stratifiesPatientBy</code>)</td>
+<td>Addition 6: events with dates, plus a response outcome on the host or the event. Stratification is then a query.</td>
+</tr>
+</tbody>
+</table>
+<p>Verdict: <strong>small additions 5, 6 and 7</strong>; the immunology chain is partly literature-only.</p>
+<h2 id="additions-in-priority-order">Additions, in priority order<a class="headerlink" href="#additions-in-priority-order" title="Permanent link">&para;</a></h2>
+<p>Each serves several CQs. None changes the three-layer design; they are slots, one enum and two classes.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Addition</th>
+<th>Serves</th>
+<th>Sketch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Sample-level observations.</strong> Make <code>Observation.is_about</code> optional, so a measurement can be about the sample as a whole; publish a controlled list of observed properties (relative abundance, gene presence, gene expression, Shannon index, Simpson index, richness, pH, temperature, UV index, cell count, ...) with the ontology term where one exists (PATO, STATO, UO for units).</td>
+<td>CQ 1–7</td>
+<td><code>is_about: required: false</code>; <code>observed_property</code> bound to a <code>micokg:property/...</code> list documented in the modelling guide.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Categorical results.</strong> Add <code>result_term</code> (<code>sosa:hasResult</code>, range uriorcurie) beside <code>simple_result</code>, for states such as dormant or stressed.</td>
+<td>CQ 2, 6</td>
+<td>one slot</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Sample condition and context.</strong> Add <code>sample_condition</code> (NCIT/MONDO/PATO term: malignant tumour, adjacent normal, healthy control), <code>specimen_type</code> (OBI/NCIT: FFPE, fresh-frozen, stool, cfDNA), and either make <code>collection_date</code> a datetime or add <code>collection_time</code>; optionally a <code>sampling_context</code> note for cloud stage or season.</td>
+<td>CQ 6, 7</td>
+<td>three slots on <code>Sample</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Taxon trait association.</strong> <code>TaxonTraitAssociation</code>: subject taxon, predicate RO:0002215 <em>capable of</em> (or RO:0000053 <em>has characteristic</em>), object GO process or PATO/OMP trait (photosynthesis, UV resistance, desiccation tolerance).</td>
+<td>CQ 1, 3, 5</td>
+<td>one association class, same slots as the others</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Plasmid class.</strong> <code>MobileGeneticElement</code> (or <code>Plasmid</code>): identifier (PLSDB accession or minted), <code>replicon_type</code> (text: IncF, IncI1, ColRNAI), <code>mobility_class</code> enum (conjugative, mobilisable, non-mobilisable), <code>in_taxon</code> (host), <code>carries_gene</code> (multivalued, to <code>FunctionalGene</code>/<code>AMRDeterminant</code>). Observations may be about it (abundance, copy number).</td>
+<td>CQ 7, 8, 9</td>
+<td>one class, one enum, four slots</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Host events.</strong> <code>HostEvent</code>: <code>host</code>, <code>event_type</code> (NCIT or CHEBI: antibiotic administration with the drug, chemotherapy, surgery, immune checkpoint blockade, relapse), <code>start_date</code>, <code>end_date</code>, optional <code>outcome</code> (responder, non-responder).</td>
+<td>CQ 8, 9; also UC3 macaques and UC5 field trials</td>
+<td>one class</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Exposure association.</strong> Rename <code>DietTaxonAssociation</code> and <code>DietMetaboliteAssociation</code> to <code>ExposureTaxonAssociation</code> and <code>ExposureMetaboliteAssociation</code>, subject FOODON, CHEBI or NCIT (foods, drugs, antibiotics).</td>
+<td>CQ 9, UC4</td>
+<td>rename plus pattern</td>
+</tr>
+</tbody>
+</table>
+<p>Not planned: storing comparisons (<code>comparedTo</code>, <code>differsFrom</code>, <code>hasSimilarity</code>), and mechanistic statements (<code>influencesChemistry</code>, <code>hasMechanism</code>, <code>exhibitsEvolutionaryShift</code>, <code>impairsImmunePriming</code>). The first group is computed by queries; the second would need free-text claims, which the sheet's own ontology column cannot ground either.</p>
+<h2 id="ontologies-named-in-the-sheet">Ontologies named in the sheet<a class="headerlink" href="#ontologies-named-in-the-sheet" title="Permanent link">&para;</a></h2>
+<p>The nine CQs name ENVO, PROV, NCBITAXON, GO, CHEBI, UBERON, MONDO, ARO, SO, OBI and RO. All are prefixes in the schema and used by at least one slot. Two are not: <strong>PO</strong> (Plant Ontology, named for CQ 2; it would only matter if plant hosts enter, as in Use case 5) and <strong>BERO</strong> (named for Use case 2 in the sheet; it is in the Ontologies tab but not in any CQ). The sheet's "Classes / concepts" column currently lists only PROV terms (Entity, Collection, Location, atLocation); the schema places those on <code>Study</code> (PROV/DCTerms) and <code>Sample</code> (<code>geo_location</code>).</p>
+<h2 id="the-two-new-use-cases">The two new use cases<a class="headerlink" href="#the-two-new-use-cases" title="Permanent link">&para;</a></h2>
+<p><strong>Use case 3, macaques (Caprice).</strong> Hosts are <em>Macaca mulatta</em> (<code>Host.in_taxon</code>), samples are faeces (<code>env_medium</code> UBERON:0001988), taxa and diversity come from observations (addition 1). What is missing is host-level data: sociability score, grooming rate, social rank, immune status, sampling period. The cleanest route is to let an <code>Observation</code> have a <code>Host</code> as its feature of interest (today only <code>Sample</code>), so behaviour and health scores are observations on the animal with a date; the CQ then joins host observations to sample observations. That is addition 1 plus a one-line range change.</p>
+<p><strong>Use case 5, SynCom in crop biocontrol (Pedro).</strong> Soil and plant-tissue samples fit <code>Sample</code> (ENVO soil terms; plant tissue as <code>env_medium</code> with PO terms, which would bring PO in). New: a <code>SyntheticCommunity</code> entity (member strains, delivery formulation), a field trial with blocks and treatments (addition 6 generalised to events on plots, not hosts), pathogen pressure and yield as outcomes. This is the furthest from the current schema and should wait for the CQs to be written.</p>
+<h2 id="suggested-order-of-work">Suggested order of work<a class="headerlink" href="#suggested-order-of-work" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>CQ 7, differential-abundance half.</strong> Runs today on <code>uc3-cq01</code>; retarget the question text and toy data to tumour versus adjacent normal tissue with <code>anatomical_context</code>, and paste the query into the sheet's translation column.</li>
+<li><strong>CQ 1, taxa-and-abundance half.</strong> Needs toy cloud samples (ENVO cloud terms, Puy de Dôme coordinates) and relative-abundance observations; one query, answerable today. Diversity indices follow once addition 1 is in.</li>
+<li><strong>Additions 1 and 5</strong>, which unlock the rest of CQ 1 and CQ 7 and most of CQ 8.</li>
+<li>Then CQ 3 (genes and pathways, mostly answerable now) and CQ 8.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
